@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 // Copyright © 2023-2024 Caleb Cushing.
-rootProject.name = "PROJECT"
+rootProject.name = "java-commons"
 
 rootDir.resolve("module").listFiles()?.forEach { file ->
   if (file.isDirectory && file?.list { _, name -> name == "build.gradle.kts" }
