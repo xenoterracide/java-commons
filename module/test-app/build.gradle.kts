@@ -5,8 +5,8 @@ buildscript { dependencyLocking.lockAllConfigurations() }
 plugins { our.javalibrary }
 
 dependencies {
-  api(platform(libs.spring.bom))
-  api(libs.spring.boot.autoconfigure)
+  implementation(platform(libs.spring.bom))
+  implementation(libs.spring.boot.autoconfigure)
 
   modules {
     module("org.springframework.boot:spring-boot-starter-logging") {
