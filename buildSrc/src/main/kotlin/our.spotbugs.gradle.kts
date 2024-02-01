@@ -11,7 +11,7 @@ plugins {
 }
 
 spotbugs {
-  excludeFilter.set(rootProject.file("spotbugs/exclude.xml"))
+  excludeFilter.set(rootProject.file(".config/spotbugs/exclude.xml"))
   effort.set(Effort.MAX)
   reportLevel.set(Confidence.LOW)
 }
