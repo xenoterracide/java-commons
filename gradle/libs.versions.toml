@@ -1,8 +1,6 @@
 [versions]
 ep = "2.+"
 checker = "3.+"
-picocli = "4.+"
-deeplearning4j = "1.+"
 spring = "3.+"
 
 [libraries]
@@ -14,7 +12,6 @@ checker-core = { module = "org.checkerframework:checker", version.ref = "checker
 commons-io = "commons-io:commons-io:2.+"
 commons-lang = { module = "org.apache.commons:commons-lang3" }
 compile-testing = "com.google.testing.compile:compile-testing:0.+"
-deeplearning4j-core = { module = "org.deeplearning4j:deeplearning4j-core", version.ref = "deeplearning4j" }
 equalsverifier = "nl.jqno.equalsverifier:equalsverifier:3.+"
 errorprone-annotations = { module = "com.google.errorprone:error_prone_annotations", version.ref = "ep" }
 errorprone-core = { module = "com.google.errorprone:error_prone_core", version.ref = "ep" }
