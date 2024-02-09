@@ -15,4 +15,5 @@ dependencies {
   implementation(libs.plugin.spotbugs)
   implementation(libs.plugin.errorprone)
   implementation(libs.plugin.gradle.v)
+  implementation(libs.plugin.capabilities)
 }

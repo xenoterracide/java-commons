@@ -6,6 +6,7 @@ plugins {
   `java-library`
   `java-test-fixtures`
   id("com.github.ben-manes.versions")
+  id("org.gradlex.java-ecosystem-capabilities")
 }
 
 dependencyLocking {
