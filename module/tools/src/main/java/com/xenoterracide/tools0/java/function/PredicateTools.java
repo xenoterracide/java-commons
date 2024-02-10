@@ -7,9 +7,9 @@ import java.util.function.Predicate;
 
 public final class PredicateTools {
 
+  private PredicateTools() {}
+
   public static <T, PROP> Predicate<T> prop(Function<T, PROP> extractor, Predicate<PROP> predicate) {
     return t -> predicate.test(extractor.apply(t));
   }
-
-  private PredicateTools() {}
 }
