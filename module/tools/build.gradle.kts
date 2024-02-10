@@ -6,6 +6,7 @@ plugins { our.javalibrary }
 
 dependencies {
   implementation(platform(libs.spring.bom))
+  testImplementation(libs.junit.api)
 }
 
 tasks.withType<JacocoCoverageVerification>().configureEach {
