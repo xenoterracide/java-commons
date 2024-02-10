@@ -12,9 +12,15 @@ dependencies {
   testRuntimeOnly(libs.bundles.junit.platform)
   testRuntimeOnly(libs.bundles.spring.test)
 
+  testCompileOnly(platform(libs.spring.bom))
+  testCompileOnly(libs.spring.test)
+
   testImplementation(platform(libs.spring.bom))
   testImplementation(libs.junit.api)
-  testImplementation(libs.spring.boot.test.autoconfigure)
+  testImplementation(libs.spring.beans)
+  testImplementation(libs.spring.context)
+  testImplementation(libs.spring.boot.test.core)
+
   modules {
     module("org.springframework.boot:spring-boot-starter-logging") {
       replacedBy(
