@@ -11,10 +11,11 @@ class PredicateToolsTest {
 
   @Test
   void prop() {
-    var record = new TestRecord("Caleb", 30);
-    var pred = PredicateTools.prop(TestRecord::name, Predicate.isEqual("Caleb"));
+    var name = "Caleb";
+    var record = new TestRecord(name);
+    var pred = PredicateTools.prop(TestRecord::name, Predicate.isEqual(name));
     assertThat(pred.test(record)).isTrue();
   }
 
-  record TestRecord(String name, int age) {}
+  record TestRecord(String name) {}
 }
