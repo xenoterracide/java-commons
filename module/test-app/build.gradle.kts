@@ -5,6 +5,9 @@ buildscript { dependencyLocking.lockAllConfigurations() }
 plugins { our.javalibrary }
 
 dependencies {
+  runtimeOnly(platform(libs.spring.bom))
+  runtimeOnly(libs.starter.log4j2)
+
   implementation(platform(libs.spring.bom))
   implementation(libs.spring.boot.autoconfigure)
 
