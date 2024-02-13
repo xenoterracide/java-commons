@@ -49,7 +49,6 @@ tasks.withType<JavaCompile>().configureEach {
     disableWarningsInGeneratedCode.set(true)
     excludedPaths.set(".*/build/generated/sources/annotationProcessor/.*")
     option("NullAway:AnnotatedPackages", "com.xenoterracide")
-    option("NullAway:CustomInitializerAnnotations", "picocli.CommandLine.Parameters")
     val errors = mutableListOf(
       "AmbiguousMethodReference",
       "ArgumentSelectionDefectChecker",

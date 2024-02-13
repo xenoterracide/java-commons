@@ -15,6 +15,8 @@ class PredicateToolsTest {
     var record = new TestRecord(name);
     var pred = PredicateTools.prop(TestRecord::name, Predicate.isEqual(name));
     assertThat(pred.test(record)).isTrue();
+    var ex = PredicateTools.prop(null, null);
+    assertThat(ex).isNotNull();
   }
 
   record TestRecord(String name) {}
