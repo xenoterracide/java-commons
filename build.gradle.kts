@@ -1,8 +1,4 @@
 // SPDX-License-Identifier: MIT
-// Copyright © 2024 Caleb Cushing.
-import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.exclude
-
-// SPDX-License-Identifier: MIT
 // Copyright © 2023-2024 Caleb Cushing.
 buildscript {
   dependencyLocking.lockAllConfigurations()
@@ -24,6 +20,9 @@ tasks.dependencies {
 dependencyAnalysis {
   issues {
     all {
+      onAny {
+        severity("fail")
+      }
       onUnusedDependencies {
         exclude(libs.junit.parameters)
       }
