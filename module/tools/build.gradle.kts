@@ -5,8 +5,7 @@ buildscript { dependencyLocking.lockAllConfigurations() }
 plugins { our.javalibrary }
 
 dependencies {
-  implementation(platform(libs.spring.bom))
-  implementation(libs.jakarta.annotation)
+  testImplementation(platform(libs.spring.bom))
   testImplementation(libs.junit.api)
 }
 
