@@ -1,6 +1,6 @@
 module com.xenoterracide.tools.java {
-  requires java.base;
   requires jakarta.annotation;
-  exports com.xenoterracide.tools0.java.function;
+  requires java.base;
   exports com.xenoterracide.tools0.java.annotation;
+  exports com.xenoterracide.tools0.java.function;
 }
