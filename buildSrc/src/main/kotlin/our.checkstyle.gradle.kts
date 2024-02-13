@@ -11,10 +11,6 @@ val libs = the<LibrariesForLibs>()
 
 tasks.withType<Checkstyle>().configureEach {
   isShowViolations = true
-  reports {
-    html.required.set(false)
-    xml.required.set(false)
-  }
 }
 
 fun checkstyleConfig(filename: String): File {
