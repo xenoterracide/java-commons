@@ -220,6 +220,7 @@ tasks.withType<JavaCompile>().configureEach {
 
     if (name != "compileTestJava") {
       options.compilerArgs.add("-Werror")
+      option("NullAway:CheckOptionalEmptiness", true)
       errors.add("NullAway")
     }
 
@@ -230,6 +231,7 @@ tasks.withType<JavaCompile>().configureEach {
           "-Xlint:-varargs",
         ),
       )
+      option("NullAway:HandleTestAssertionLibraries", true)
     }
 
     error(*errors.toTypedArray())
