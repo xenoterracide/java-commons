@@ -6,6 +6,7 @@ plugins { our.javalibrary }
 
 dependencies {
   implementation(platform(libs.spring.bom))
+  implementation(libs.jakarta.annotation)
   testImplementation(libs.junit.api)
 }
 

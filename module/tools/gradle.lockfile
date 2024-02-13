@@ -81,6 +81,7 @@ io.github.solven-eu.cleanthat:config:2.16=spotless1659553931
 io.github.solven-eu.cleanthat:java:2.16=spotless1659553931
 io.github.solven-eu.cleanthat:refactorer:2.16=spotless1659553931
 io.github.solven-eu.pepper:pepper:4.5=spotless1659553931
+jakarta.annotation:jakarta.annotation-api:2.1.1=compileClasspath,runtimeClasspath,testCompileClasspath,testFixturesRuntimeClasspath,testRuntimeClasspath
 javax.inject:javax.inject:1=annotationProcessor,errorprone,testAnnotationProcessor,testFixturesAnnotationProcessor
 jaxen:jaxen:2.0.0=spotbugs
 net.bytebuddy:byte-buddy:1.14.11=testCompileClasspath,testRuntimeClasspath
