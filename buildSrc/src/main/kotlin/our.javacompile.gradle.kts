@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // Copyright © 2023-2024 Caleb Cushing.
+import gradle.kotlin.dsl.accessors._c90a3bd9579d9de127c945c10affd0a1.testFixturesCompileOnly
 import net.ltgt.gradle.errorprone.errorprone
 import org.gradle.accessors.dm.LibrariesForLibs
 
@@ -14,7 +15,9 @@ val libs = the<LibrariesForLibs>()
 
 dependencies {
   errorprone(libs.bundles.ep)
+  compileOnly(platform(libs.spring.bom))
   compileOnly(libs.bundles.compile.annotations)
+  testFixturesCompileOnly(platform(libs.spring.bom))
   testFixturesCompileOnly(libs.bundles.compile.annotations)
   testCompileOnly(libs.bundles.compile.annotations)
 }
@@ -49,7 +52,6 @@ tasks.withType<JavaCompile>().configureEach {
     disableWarningsInGeneratedCode.set(true)
     excludedPaths.set(".*/build/generated/sources/annotationProcessor/.*")
     option("NullAway:AnnotatedPackages", "com.xenoterracide")
-    option("NullAway:CustomInitializerAnnotations", "picocli.CommandLine.Parameters")
     val errors = mutableListOf(
       "AmbiguousMethodReference",
       "ArgumentSelectionDefectChecker",
@@ -221,6 +223,7 @@ tasks.withType<JavaCompile>().configureEach {
 
     if (name != "compileTestJava") {
       options.compilerArgs.add("-Werror")
+      option("NullAway:CheckOptionalEmptiness", true)
       errors.add("NullAway")
     }
 
@@ -231,6 +234,7 @@ tasks.withType<JavaCompile>().configureEach {
           "-Xlint:-varargs",
         ),
       )
+      option("NullAway:HandleTestAssertionLibraries", true)
     }
 
     error(*errors.toTypedArray())

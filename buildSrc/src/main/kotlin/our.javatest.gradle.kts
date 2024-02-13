@@ -12,7 +12,6 @@ plugins {
 val libs = the<LibrariesForLibs>()
 
 dependencies {
-  implementation(libs.log4j.api)
   testImplementation(platform(libs.junit.bom))
   testImplementation(libs.bundles.test)
   testRuntimeOnly(libs.bundles.junit.platform)

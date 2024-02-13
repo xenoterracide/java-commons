@@ -16,3 +16,16 @@ version = "0.1.0-SNAPSHOT"
 tasks.dependencies {
   dependsOn(subprojects.map { "${it.path}:dependencies" })
 }
+
+dependencyAnalysis {
+  issues {
+    all {
+      onAny {
+        severity("fail")
+      }
+      onUnusedDependencies {
+        exclude(libs.junit.parameters)
+      }
+    }
+  }
+}
