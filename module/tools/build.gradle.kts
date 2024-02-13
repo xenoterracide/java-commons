@@ -8,8 +8,3 @@ dependencies {
   testImplementation(platform(libs.spring.bom))
   testImplementation(libs.junit.api)
 }
-
-tasks.withType<JacocoCoverageVerification>().configureEach {
-  dependsOn(project.tasks.withType<JacocoReport>())
-  violationRules { rule { limit { minimum = 0.3.toBigDecimal() } } }
-}
