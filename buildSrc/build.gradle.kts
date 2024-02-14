@@ -14,5 +14,4 @@ dependencies {
   implementation(libs.plugin.spotless)
   implementation(libs.plugin.spotbugs)
   implementation(libs.plugin.errorprone)
-  implementation(libs.plugin.gradle.v)
 }

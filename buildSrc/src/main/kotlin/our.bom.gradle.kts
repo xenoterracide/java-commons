@@ -4,7 +4,6 @@ import org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {
   `java-library`
-  id("com.github.ben-manes.versions")
 }
 
 dependencyLocking {
