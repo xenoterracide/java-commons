@@ -1,12 +1,10 @@
 // SPDX-License-Identifier: MIT
 // Copyright © 2023-2024 Caleb Cushing.
-import gradle.kotlin.dsl.accessors._c90a3bd9579d9de127c945c10affd0a1.testFixturesCompileOnly
 import net.ltgt.gradle.errorprone.errorprone
 import org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {
   `java-library`
-  `java-test-fixtures`
   id("our.bom")
   id("net.ltgt.errorprone")
 }
@@ -17,8 +15,6 @@ dependencies {
   errorprone(libs.bundles.ep)
   compileOnly(platform(libs.spring.bom))
   compileOnly(libs.bundles.compile.annotations)
-  testFixturesCompileOnly(platform(libs.spring.bom))
-  testFixturesCompileOnly(libs.bundles.compile.annotations)
   testCompileOnly(libs.bundles.compile.annotations)
 }
 

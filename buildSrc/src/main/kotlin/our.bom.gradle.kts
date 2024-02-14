@@ -4,7 +4,6 @@ import org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {
   `java-library`
-  `java-test-fixtures`
   id("com.github.ben-manes.versions")
 }
 

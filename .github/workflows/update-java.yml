@@ -31,4 +31,4 @@ jobs:
       - run: gh pr merge --auto --squash ${{ env.PULL_REQUEST_NUMBER }}
         if: ${{ env.PULL_REQUEST_NUMBER != '' }}
         env:
-          GH_TOKEN: ${{ secrets.PAT }}
+          GH_TOKEN: ${{ secrets.GH_MERGE_PAT }}
