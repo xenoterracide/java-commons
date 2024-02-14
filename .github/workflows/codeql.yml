@@ -63,7 +63,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v3
         with:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
-      - run: ./gradlew classes
+      - run: ./gradlew classes --console=verbose
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
         with:
