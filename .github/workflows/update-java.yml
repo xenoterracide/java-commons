@@ -18,11 +18,11 @@ jobs:
       - uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: current
-          arguments: wrapper --write-locks --console=verbose
+          arguments: wrapper --write-locks --console=rich
       - run: ./gradlew --version
       - run: find . -name '*gradle.lockfile' -delete
-      - run: ./gradlew wrapper --write-locks --console=verbose
-      - run: ./gradlew build buildHealth --write-locks --console=verbose
+      - run: ./gradlew wrapper --write-locks --console=rich
+      - run: ./gradlew build buildHealth --write-locks --console=rich
       - uses: peter-evans/create-pull-request@v5
         with:
           title: "chore: Update Java Dependencies"
