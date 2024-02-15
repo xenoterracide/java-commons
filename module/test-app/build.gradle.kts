@@ -4,7 +4,7 @@ buildscript { dependencyLocking.lockAllConfigurations() }
 
 plugins { our.javalibrary }
 
-version = providers.environmentVariable("TEST_APP_VERSION").orElse("0.1.0-SNAPSHOT")
+version = providers.environmentVariable("VERSION").orElse("0.1.0-SNAPSHOT")
 
 dependencies {
   runtimeOnly(platform(libs.spring.bom))
