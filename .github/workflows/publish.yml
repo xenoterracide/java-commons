@@ -5,7 +5,6 @@ on:
   push:
 jobs:
   publish:
-    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -13,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: gradle/actions/setup-gradle@v3
-      - run: ./gradlew publish
+      - run: ./gradlew build --no-build-cache
+        with:
+          cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
+      - run: ./gradlew publish --no-configuration-cache
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
