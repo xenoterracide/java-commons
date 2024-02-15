@@ -18,7 +18,7 @@ publishing {
       }
       pom {
         artifactId = project.name
-        groupId = project.group.toString()
+        groupId = rootProject.group.toString()
         version = project.version.toString()
         description = project.description
         inceptionYear = "2024"

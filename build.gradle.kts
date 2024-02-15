@@ -11,7 +11,6 @@ plugins {
 dependencyLocking.lockAllConfigurations()
 
 group = "com.xenoterracide"
-version = providers.environmentVariable("VERSION").orElse("0.1.0-SNAPSHOT")
 
 tasks.dependencies {
   dependsOn(subprojects.map { "${it.path}:dependencies" })
