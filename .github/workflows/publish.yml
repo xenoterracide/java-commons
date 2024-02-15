@@ -10,9 +10,6 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with:
-          java-version: 21
       - uses: gradle/actions/setup-gradle@v3
       - run: ./gradlew publish
         env:
