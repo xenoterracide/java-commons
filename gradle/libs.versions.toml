@@ -35,7 +35,7 @@ junit-launcher = { module = "org.junit.platform:junit-platform-launcher" }
 log4j-api = { module = "org.apache.logging.log4j:log4j-api" }
 mockito = { module = "org.mockito:mockito-core" }
 plugin-errorprone = "net.ltgt.gradle:gradle-errorprone-plugin:3.+"
-plugin-spotbugs = "com.github.spotbugs.snom:spotbugs-gradle-plugin:5.+"
+plugin-spotbugs = "com.github.spotbugs.snom:spotbugs-gradle-plugin:6.+"
 plugin-spotless = "com.diffplug.spotless:spotless-plugin-gradle:6.+"
 slf4j-nop = { module = "org.slf4j:slf4j-nop" }
 spotbugs = "com.github.spotbugs:spotbugs:4.+"
