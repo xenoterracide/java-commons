@@ -31,8 +31,8 @@ jobs:
         with:
           title: "chore: Update Java Dependencies"
           branch: topic/update-java
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GH_MERGE_PAT }}
       - run: gh pr merge --auto --squash ${{ env.PULL_REQUEST_NUMBER }}
         if: ${{ env.PULL_REQUEST_NUMBER != '' }}
         env:
-          GH_TOKEN: ${{ secrets.PAT }}
+          GH_TOKEN: ${{ secrets.GH_MERGE_PAT }}

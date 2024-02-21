@@ -16,8 +16,20 @@ rootDir.resolve("module").listFiles()?.forEach { file ->
 
 pluginManagement {
   repositories {
-    mavenCentral()
     gradlePluginPortal()
+    mavenCentral()
+  }
+}
+
+plugins {
+  id("com.gradle.enterprise") version ("3.16.2")
+}
+
+gradleEnterprise {
+  buildScan {
+    publishOnFailureIf(providers.environmentVariable("CI").isPresent)
+    termsOfServiceUrl = "https://gradle.com/terms-of-service"
+    termsOfServiceAgree = "yes"
   }
 }
 
