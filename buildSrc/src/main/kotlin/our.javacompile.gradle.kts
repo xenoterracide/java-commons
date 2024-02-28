@@ -25,6 +25,13 @@ java {
   }
 }
 
+tasks.compileJava {
+  options.release = 11
+}
+tasks.compileTestJava {
+  options.release = 21
+}
+
 tasks.withType<Jar> {
   archiveBaseName.set(project.path.substring(1).replace(":", "-"))
 }

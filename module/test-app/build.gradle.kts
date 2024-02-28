@@ -7,6 +7,10 @@ plugins { our.javalibrary }
 
 version = providers.environmentVariable("VERSION").orElse("0.1.0-SNAPSHOT")
 
+tasks.compileJava {
+  options.release = 17
+}
+
 dependencies {
   runtimeOnly(platform(libs.spring.bom))
   runtimeOnly(libs.starter.log4j2)
