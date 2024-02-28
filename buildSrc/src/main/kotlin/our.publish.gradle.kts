@@ -3,6 +3,7 @@
 
 plugins {
   `maven-publish`
+  id("com.xenoterracide.gradle.semver")
 }
 
 val username = "xenoterracide"
@@ -12,6 +13,9 @@ val repoShort = "$username/java-commons"
 publishing {
   publications {
     create<MavenPublication>("maven") {
+      from(components["java"])
+    }
+    withType<MavenPublication>().configureEach {
       versionMapping {
         allVariants {
           fromResolutionResult()
@@ -27,8 +31,21 @@ publishing {
         licenses {
           license {
             name = "Apache-2.0"
-            url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+            url = "https://choosealicense.com/licenses/apache-2.0/"
             distribution = "repo"
+            comments = "Java"
+          }
+          license {
+            name = "MIT"
+            url = "https://choosealicense.com/licenses/mit/"
+            distribution = "repo"
+            comments = "Gradle Build Files and Configuration Files"
+          }
+          license {
+            name = "CC-BY-4.0"
+            url = "https://choosealicense.com/licenses/cc-by-4.0/"
+            distribution = "repo"
+            comments = "Documentation including Javadoc"
           }
         }
         developers {
@@ -44,7 +61,6 @@ publishing {
           url = "$githubUrl/$repoShort"
         }
       }
-      from(components["java"])
     }
   }
 
@@ -52,10 +68,7 @@ publishing {
     maven {
       name = "GH"
       url = uri("https://maven.pkg.github.com/$repoShort")
-      credentials {
-        username = System.getenv("GITHUB_ACTOR")
-        password = System.getenv("GITHUB_TOKEN")
-      }
+      credentials(PasswordCredentials::class)
     }
   }
 }
