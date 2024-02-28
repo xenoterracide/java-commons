@@ -5,6 +5,10 @@ buildscript { dependencyLocking.lockAllConfigurations() }
 
 plugins { our.javalibrary }
 
+tasks.compileJava {
+  options.release = 17
+}
+
 dependencies {
   runtimeOnly(platform(libs.spring.bom))
   runtimeOnly(libs.starter.log4j2)

@@ -6,7 +6,6 @@ import org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {
   `java-library`
-  `java-test-fixtures`
   id("our.bom")
   id("net.ltgt.errorprone")
 }
@@ -17,8 +16,6 @@ dependencies {
   errorprone(libs.bundles.ep)
   compileOnly(platform(libs.spring.bom))
   compileOnly(libs.bundles.compile.annotations)
-  testFixturesCompileOnly(platform(libs.spring.bom))
-  testFixturesCompileOnly(libs.bundles.compile.annotations)
   testCompileOnly(libs.bundles.compile.annotations)
 }
 
@@ -26,6 +23,13 @@ java {
   toolchain {
     languageVersion.set(JavaLanguageVersion.of(21))
   }
+}
+
+tasks.compileJava {
+  options.release = 11
+}
+tasks.compileTestJava {
+  options.release = 21
 }
 
 tasks.withType<Jar> {
