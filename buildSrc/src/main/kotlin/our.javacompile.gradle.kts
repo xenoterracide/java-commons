@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
-// Copyright © 2023-2024 Caleb Cushing.
-import gradle.kotlin.dsl.accessors._c90a3bd9579d9de127c945c10affd0a1.testFixturesCompileOnly
+// © Copyright 2023-2024 Caleb Cushing. All rights reserved.
+
 import net.ltgt.gradle.errorprone.errorprone
 import org.gradle.accessors.dm.LibrariesForLibs
 
@@ -52,6 +52,7 @@ tasks.withType<JavaCompile>().configureEach {
     disableWarningsInGeneratedCode.set(true)
     excludedPaths.set(".*/build/generated/sources/annotationProcessor/.*")
     option("NullAway:AnnotatedPackages", "com.xenoterracide")
+
     val errors = mutableListOf(
       "AmbiguousMethodReference",
       "ArgumentSelectionDefectChecker",
@@ -235,6 +236,7 @@ tasks.withType<JavaCompile>().configureEach {
         ),
       )
       option("NullAway:HandleTestAssertionLibraries", true)
+      option("NullAway:ExcludedFieldAnnotations", "org.junit.jupiter.api.io.TempDir")
     }
 
     error(*errors.toTypedArray())

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
-// Copyright © 2023-2024 Caleb Cushing.
+// © Copyright 2023-2024 Caleb Cushing. All rights reserved.
+
 rootProject.name = "java-commons"
 
 rootDir.resolve("module").listFiles()?.forEach { file ->
