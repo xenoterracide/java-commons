@@ -5,8 +5,6 @@ buildscript { dependencyLocking.lockAllConfigurations() }
 
 plugins { our.javalibrary }
 
-version = providers.environmentVariable("VERSION").orElse("0.1.0-SNAPSHOT")
-
 tasks.compileJava {
   options.release = 17
 }

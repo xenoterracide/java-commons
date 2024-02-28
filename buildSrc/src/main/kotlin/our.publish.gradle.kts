@@ -6,6 +6,8 @@ plugins {
   id("com.xenoterracide.gradle.semver")
 }
 
+version = semver.maven
+
 val username = "xenoterracide"
 val githubUrl = "https://github.com"
 val repoShort = "$username/java-commons"

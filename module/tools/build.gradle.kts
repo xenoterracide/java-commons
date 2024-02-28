@@ -5,8 +5,6 @@ buildscript { dependencyLocking.lockAllConfigurations() }
 
 plugins { our.javalibrary }
 
-version = providers.environmentVariable("VERSION").orElse("0.1.0-SNAPSHOT")
-
 dependencies {
   testImplementation(platform(libs.spring.bom))
   testImplementation(libs.junit.api)
