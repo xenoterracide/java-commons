@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
-// Copyright © 2023-2024 Caleb Cushing.
+// © Copyright 2023-2024 Caleb Cushing. All rights reserved.
+
 rootProject.name = "java-commons"
 
 rootDir.resolve("module").listFiles()?.forEach { file ->
@@ -16,8 +17,20 @@ rootDir.resolve("module").listFiles()?.forEach { file ->
 
 pluginManagement {
   repositories {
-    mavenCentral()
     gradlePluginPortal()
+    mavenCentral()
+  }
+}
+
+plugins {
+  id("com.gradle.enterprise") version ("3.16.2")
+}
+
+gradleEnterprise {
+  buildScan {
+    publishOnFailureIf(providers.environmentVariable("CI").isPresent)
+    termsOfServiceUrl = "https://gradle.com/terms-of-service"
+    termsOfServiceAgree = "yes"
   }
 }
 

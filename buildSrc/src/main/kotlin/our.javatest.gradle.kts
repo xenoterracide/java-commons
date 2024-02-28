@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
-// Copyright © 2023-2024 Caleb Cushing.
+// © Copyright 2023-2024 Caleb Cushing. All rights reserved.
+
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
@@ -33,8 +34,6 @@ tasks.withType<Test>().configureEach {
       exceptionFormat = TestExceptionFormat.FULL
       events.addAll(
         listOf(
-          TestLogEvent.STARTED,
-          TestLogEvent.PASSED,
           TestLogEvent.SKIPPED,
           TestLogEvent.FAILED,
         ),
