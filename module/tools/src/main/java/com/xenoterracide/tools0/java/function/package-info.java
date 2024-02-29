@@ -1,4 +1,4 @@
-@NonNullApi
+@NullMarked
 package com.xenoterracide.tools0.java.function;
 
-import com.xenoterracide.tools0.java.annotation.NonNullApi;
+import org.jspecify.annotations.NullMarked;
