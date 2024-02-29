@@ -3,17 +3,17 @@
 
 package com.xenoterracide.tools0.java.function;
 
-import jakarta.annotation.Nonnull;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import org.jspecify.annotations.NonNull;
 
 public final class PredicateTools {
 
   private PredicateTools() {}
 
-  public static @Nonnull <T, PROP> Predicate<T> prop(
-    @Nonnull Function<T, PROP> extractor,
-    @Nonnull Predicate<PROP> predicate
+  public static @NonNull <T, PROP> Predicate<T> prop(
+    @NonNull Function<T, PROP> extractor,
+    @NonNull Predicate<PROP> predicate
   ) {
     return t -> predicate.test(extractor.apply(t));
   }

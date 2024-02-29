@@ -1,6 +1,7 @@
-module com.xenoterracide.tools.java {
-  requires jakarta.annotation;
+import org.jspecify.annotations.NullMarked;
+
+@NullMarked module com.xenoterracide.tools.java {
   requires java.base;
-  exports com.xenoterracide.tools0.java.annotation;
+  requires org.jspecify;
   exports com.xenoterracide.tools0.java.function;
 }
