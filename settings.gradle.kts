@@ -18,7 +18,6 @@ rootDir.resolve("module").listFiles()?.forEach { file ->
 pluginManagement {
   repositories {
     gradlePluginPortal()
-    mavenCentral()
   }
 }
 
@@ -40,7 +39,6 @@ dependencyResolutionManagement {
 
   repositories {
     mavenCentral()
-    gradlePluginPortal() // this should only be necessary in buildSrc/settings.gradle.kts
   }
 }
 
