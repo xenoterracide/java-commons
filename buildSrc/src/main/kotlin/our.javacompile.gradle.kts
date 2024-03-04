@@ -28,10 +28,11 @@ java {
 }
 
 tasks.withType<Javadoc>().configureEach {
-  val o = options as StandardJavadocDocletOptions
-  o.encoding = "UTF-8"
-  o.addStringOption("tag", "apiNote:a:'API Note:'")
-  o.addStringOption("tag", "implNote:a:'Implementation Note:'")
+  (options as StandardJavadocDocletOptions).apply {
+    encoding = "UTF-8"
+    addStringOption("tag", "apiNote:a:'API Note:'")
+    addStringOption("tag", "implNote:a:'Implementation Note:'")
+  }
 }
 
 tasks.withType<Jar> {
