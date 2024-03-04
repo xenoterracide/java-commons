@@ -27,6 +27,13 @@ java {
   }
 }
 
+tasks.withType<Javadoc>().configureEach {
+  val o = options as StandardJavadocDocletOptions
+  o.encoding = "UTF-8"
+  o.addStringOption("tag", "apiNote:a:'API Note:'")
+  o.addStringOption("tag", "implNote:a:'Implementation Note:'")
+}
+
 tasks.withType<Jar> {
   archiveBaseName.set(project.path.substring(1).replace(":", "-"))
 }

@@ -15,7 +15,7 @@ class ExceptionToolsTest {
 
   @Test
   void convertRuntimeExceptionsAreJustRethrown() {
-    assertThat(ExceptionTools.convert(new NullPointerException()))
+    assertThat(ExceptionTools.toRuntime(new NullPointerException()))
       .isInstanceOf(NullPointerException.class)
       .hasNoCause();
   }
@@ -23,13 +23,13 @@ class ExceptionToolsTest {
   @Test
   void convertIoExceptionsAsUncheckedIoExceptions() {
     var e = new IOException();
-    assertThat(ExceptionTools.convert(e)).isInstanceOf(UncheckedIOException.class).hasCause(e);
+    assertThat(ExceptionTools.toRuntime(e)).isInstanceOf(UncheckedIOException.class).hasCause(e);
   }
 
   @Test
   void convertOtherCheckedAsRuntime() {
     var e = new NoSuchFieldException();
-    assertThat(ExceptionTools.convert(e)).isInstanceOf(RuntimeException.class).hasCause(e);
+    assertThat(ExceptionTools.toRuntime(e)).isInstanceOf(RuntimeException.class).hasCause(e);
   }
 
   @Test
@@ -37,7 +37,7 @@ class ExceptionToolsTest {
     assertThatExceptionOfType(UncheckedIOException.class).isThrownBy(() -> {
       Try.of(() -> {
         throw new IOException();
-      }).getOrElseThrow(ExceptionTools::convert);
+      }).getOrElseThrow(ExceptionTools::toRuntime);
     });
   }
 }

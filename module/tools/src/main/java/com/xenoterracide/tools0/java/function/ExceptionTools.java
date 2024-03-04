@@ -15,32 +15,30 @@ public final class ExceptionTools {
   private ExceptionTools() {}
 
   /**
-   * Converts a checked exception to an unchecked exception.
-   *
-   * - {@link IOException} to {@link UncheckedIOException}.
-   * - {@link RuntimeException} is returned as is.
-   *
-   * [source,java]
-   * --
-   * class Sample {
-   *   void vavrSample() {
-   *     Try.of(() -> { throw new IOException(); }).getOrElseThrow(ExceptionTools::convert);
-   *   }
-   *
-   *   void rethrowExample() {
-   *     try {
-   *       throw new IOException();
-   *     } catch (Exception e) {
-   *       throw ExceptionTools.convert(e);
-   *     }
-   *   }
+   * Converts a checked exception to a {@link RuntimeException}.
+   * {@snippet :
+   * try {
+   *   throw new IOException();
+   * } catch (Exception e) {
+   *   throw ExceptionTools.toRuntime(e);
    * }
-   * --
-   *
-   * @param  e the exception to convert
+   * // Try is from vavr.io
+   * Try.of(() -> { throw new IOException(); })
+   *    .getOrElseThrow(ExceptionTools::toRuntime);
+   *}
+   * @param e the exception to convert.
+   * @return {@link RuntimeException} the converted exception.
+   * @implNote
+   * <ul>
+   *   <li>{@link IOException} to {@link UncheckedIOException}.</li>
+   *   <li>{@link RuntimeException} is returned as is.</li>
+   *   <li>Other exceptions are wrapped in a {@link RuntimeException}.</li>
+   * </ul>
+   * @see <a href="https://docs.vavr.io/#_try">vavr.io Try</a>
    */
+  @SuppressWarnings("InvalidInlineTag")
   // CHECKSTYLE:OFF: ReturnCount - library to avoid conditional returns and throws elsewhere
-  public static @NonNull RuntimeException convert(@NonNull Throwable e) {
+  public static @NonNull RuntimeException toRuntime(@NonNull Throwable e) {
     if (e instanceof IOException) {
       return new UncheckedIOException((IOException) e);
     }
