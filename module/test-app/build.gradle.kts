@@ -9,6 +9,10 @@ tasks.compileJava {
   options.release = 17
 }
 
+tasks.javadoc {
+  enabled = false
+}
+
 dependencies {
   runtimeOnly(platform(libs.spring.bom))
   runtimeOnly(libs.starter.log4j2)
