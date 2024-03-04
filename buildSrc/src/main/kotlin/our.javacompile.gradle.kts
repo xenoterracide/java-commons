@@ -20,16 +20,11 @@ dependencies {
 }
 
 java {
+  withJavadocJar()
+  withSourcesJar()
   toolchain {
     languageVersion.set(JavaLanguageVersion.of(21))
   }
-}
-
-tasks.compileJava {
-  options.release = 11
-}
-tasks.compileTestJava {
-  options.release = 21
 }
 
 tasks.withType<Jar> {

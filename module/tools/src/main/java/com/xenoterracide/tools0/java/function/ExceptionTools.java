@@ -15,19 +15,39 @@ public final class ExceptionTools {
   private ExceptionTools() {}
 
   /**
-   * Rethrow the given exception as a runtime exception.
-   * {@link RuntimeException} is simply rethrown.
-   * {@link IOException} is rethrown as {@link UncheckedIOException}.
-   * {@link Throwable} is rethrown as {@link RuntimeException}.
-   * @param e the {@link Throwable} to rethrow
+   * Converts a checked exception to an unchecked exception.
+   *
+   * - {@link IOException} to {@link UncheckedIOException}.
+   * - {@link RuntimeException} is returned as is.
+   *
+   * [source,java]
+   * --
+   * class Sample {
+   *   void vavrSample() {
+   *     Try.of(() -> { throw new IOException(); }).getOrElseThrow(ExceptionTools::convert);
+   *   }
+   *
+   *   void rethrowExample() {
+   *     try {
+   *       throw new IOException();
+   *     } catch (Exception e) {
+   *       throw ExceptionTools.convert(e);
+   *     }
+   *   }
+   * }
+   * --
+   *
+   * @param  e the exception to convert
    */
-  public static void rethrow(@NonNull Throwable e) {
+  // CHECKSTYLE:OFF: ReturnCount - library to avoid conditional returns and throws elsewhere
+  public static @NonNull RuntimeException convert(@NonNull Throwable e) {
     if (e instanceof IOException) {
-      throw new UncheckedIOException((IOException) e);
+      return new UncheckedIOException((IOException) e);
     }
     if (e instanceof RuntimeException) {
-      throw (RuntimeException) e;
+      return (RuntimeException) e;
     }
-    throw new RuntimeException(e);
+    return new RuntimeException(e);
   }
+  // CHECKSTYLE:ON
 }

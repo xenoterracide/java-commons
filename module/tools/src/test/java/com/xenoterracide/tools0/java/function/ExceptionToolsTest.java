@@ -3,8 +3,10 @@
 
 package com.xenoterracide.tools0.java.function;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+import io.vavr.control.Try;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import org.junit.jupiter.api.Test;
@@ -12,21 +14,30 @@ import org.junit.jupiter.api.Test;
 class ExceptionToolsTest {
 
   @Test
-  void rethrowRuntimeExceptionsAreJustRethrown() {
-    assertThatExceptionOfType(NullPointerException.class)
-      .isThrownBy(() -> ExceptionTools.rethrow(new NullPointerException()))
-      .withNoCause();
+  void convertRuntimeExceptionsAreJustRethrown() {
+    assertThat(ExceptionTools.convert(new NullPointerException()))
+      .isInstanceOf(NullPointerException.class)
+      .hasNoCause();
   }
 
   @Test
-  void rethrowIoExceptionsAsUncheckedIoExceptions() {
+  void convertIoExceptionsAsUncheckedIoExceptions() {
     var e = new IOException();
-    assertThatExceptionOfType(UncheckedIOException.class).isThrownBy(() -> ExceptionTools.rethrow(e)).withCause(e);
+    assertThat(ExceptionTools.convert(e)).isInstanceOf(UncheckedIOException.class).hasCause(e);
   }
 
   @Test
-  void rethrowOtherCheckedAsRuntime() {
+  void convertOtherCheckedAsRuntime() {
     var e = new NoSuchFieldException();
-    assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> ExceptionTools.rethrow(e)).withCause(e);
+    assertThat(ExceptionTools.convert(e)).isInstanceOf(RuntimeException.class).hasCause(e);
+  }
+
+  @Test
+  void convertVavr() {
+    assertThatExceptionOfType(UncheckedIOException.class).isThrownBy(() -> {
+      Try.of(() -> {
+        throw new IOException();
+      }).getOrElseThrow(ExceptionTools::convert);
+    });
   }
 }
