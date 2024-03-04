@@ -36,8 +36,7 @@ public final class ExceptionTools {
    * </ul>
    * @see <a href="https://docs.vavr.io/#_try">vavr.io Try</a>
    */
-  @SuppressWarnings("InvalidInlineTag")
-  // CHECKSTYLE:OFF: ReturnCount - library to avoid conditional returns and throws elsewhere
+  // CHECKSTYLE.OFF: ReturnCount
   public static @NonNull RuntimeException toRuntime(@NonNull Throwable e) {
     if (e instanceof IOException) {
       return new UncheckedIOException((IOException) e);
@@ -47,5 +46,5 @@ public final class ExceptionTools {
     }
     return new RuntimeException(e);
   }
-  // CHECKSTYLE:ON
+  // CHECKSTYLE.ON
 }

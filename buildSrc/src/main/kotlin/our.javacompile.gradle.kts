@@ -51,11 +51,12 @@ tasks.withType<JavaCompile>().configureEach {
       "-Xlint:-exports",
       "-Xlint:-requires-transitive-automatic",
       "-Xlint:-requires-automatic",
-      "-Xlint:-fallthrough", // handled by error prone in a smarter way
+      "-Xlint:-fallthrough", // handled by error-prone in a smarter way
     ),
   )
 
   options.errorprone {
+    disable("InvalidInlineTag") // false? positive on @snippet
     disableWarningsInGeneratedCode.set(true)
     excludedPaths.set(".*/build/generated/sources/annotationProcessor/.*")
     option("NullAway:AnnotatedPackages", "com.xenoterracide")
