@@ -108,16 +108,8 @@
       <property name="checkFormat" value="$1" />
     </module>
 
-    <!-- Checks for Javadoc comments.                     -->
-    <!-- See https://checkstyle.org/config_javadoc.html -->
-    <!--
-    <module name="InvalidJavadocPosition"/>
-    <module name="JavadocMethod"/>
-    <module name="JavadocType"/>
-    <module name="JavadocVariable"/>
-    <module name="JavadocStyle"/>
-    <module name="MissingJavadocMethod"/>
-    -->
+    <!-- https://checkstyle.sourceforge.io/checks/javadoc/-->
+    <module name="AtclauseOrder" />
 
     <!-- Checks for Naming Conventions https://checkstyle.org/checks/naming/ -->
     <module name="AbbreviationAsWordInName" />
