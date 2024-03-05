@@ -5,5 +5,8 @@ package com.xenoterracide;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Test application.
+ */
 @SpringBootApplication
 class TestApplication {}

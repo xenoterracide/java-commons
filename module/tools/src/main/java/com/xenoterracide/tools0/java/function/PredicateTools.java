@@ -17,13 +17,14 @@ public final class PredicateTools {
   /**
    * Allows for simple filtering based on a property of an object.
    * {@snippet :
-   * record TestRecord(String name) {}
+   *   record TestRecord(String name) {}
    * }
    * {@snippet :
-   * Stream.of(new TestRecord("Caleb"), new TestRecord("Bob"))
-   *      .filter(prop(TestRecord::name, Predicate.isEqual("Caleb")))
-   *      .collect(Collectors.toList()); // [TestRecord[name=Caleb]]
+   *   Stream.of(new TestRecord("Caleb"), new TestRecord("Bob"))
+   *     .filter(prop(TestRecord::name, Predicate.isEqual("Caleb")))
+   *     .collect(Collectors.toList()); // [TestRecord[name=Caleb]]
    * }
+   *
    * @param <T>       the type parameter
    * @param <PROP>    the type parameter
    * @param extractor the extractor
