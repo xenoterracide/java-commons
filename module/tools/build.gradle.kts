@@ -3,7 +3,10 @@
 
 buildscript { dependencyLocking.lockAllConfigurations() }
 
-plugins { our.javalibrary }
+plugins {
+  our.javalibrary
+  alias(libs.plugins.module.testing)
+}
 
 dependencies {
   compileOnlyApi(libs.jspecify)
@@ -14,4 +17,10 @@ dependencies {
 
 tasks.compileJava {
   options.release = 11
+}
+
+javaModuleTesting.whitebox(testing.suites["test"]) {
+  requires.add("org.junit.jupiter.api")
+  requires.add("org.assertj.core")
+  requires.add("io.vavr")
 }
