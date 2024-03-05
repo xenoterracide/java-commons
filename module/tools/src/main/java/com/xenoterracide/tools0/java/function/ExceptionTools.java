@@ -15,19 +15,37 @@ public final class ExceptionTools {
   private ExceptionTools() {}
 
   /**
-   * Rethrow the given exception as a runtime exception.
-   * {@link RuntimeException} is simply rethrown.
-   * {@link IOException} is rethrown as {@link UncheckedIOException}.
-   * {@link Throwable} is rethrown as {@link RuntimeException}.
-   * @param e the {@link Throwable} to rethrow
+   * Converts a checked exception to a {@link RuntimeException}.
+   * {@snippet :
+   *   try {
+   *     throw new IOException();
+   *   } catch (Exception e) {
+   *     throw ExceptionTools.toRuntime(e);
+   *   }
+   *   // Try is from vavr.io
+   *   Try.of(() -> { throw new IOException(); })
+   *     .getOrElseThrow(ExceptionTools::toRuntime);
+   * }
+   *
+   * @param e the exception to convert.
+   * @return {@link RuntimeException} the converted exception.
+   * @implNote
+   *     <ul>
+   *       <li>{@link IOException} to {@link UncheckedIOException}.</li>
+   *       <li>{@link RuntimeException} is returned as is.</li>
+   *       <li>Other exceptions are wrapped in a {@link RuntimeException}.</li>
+   *     </ul>
+   * @see <a href="https://docs.vavr.io/#_try">vavr.io Try</a>
    */
-  public static void rethrow(@NonNull Throwable e) {
+  // CHECKSTYLE.OFF: ReturnCount
+  public static @NonNull RuntimeException toRuntime(@NonNull Throwable e) {
     if (e instanceof IOException) {
-      throw new UncheckedIOException((IOException) e);
+      return new UncheckedIOException((IOException) e);
     }
     if (e instanceof RuntimeException) {
-      throw (RuntimeException) e;
+      return (RuntimeException) e;
     }
-    throw new RuntimeException(e);
+    return new RuntimeException(e);
   }
+  // CHECKSTYLE.ON
 }
