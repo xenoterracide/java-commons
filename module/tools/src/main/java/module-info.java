@@ -6,7 +6,7 @@ import org.jspecify.annotations.NullMarked;
  *   Module is {@link NullMarked} and APIs {@link org.jspecify.annotations.NonNull} unless otherwise documented.
  * </p>
  */
-@NullMarked module com.xenoterracide.tools.java {
+@NullMarked module com.xenoterracide.tools {
   requires java.base;
   requires org.jspecify;
   exports com.xenoterracide.tools0.java.function;

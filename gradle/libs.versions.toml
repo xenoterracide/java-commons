@@ -28,6 +28,7 @@ jackson-dataformat-yaml = { module = "com.fasterxml.jackson.dataformat:jackson-d
 jackson-module-parameter-names = { module = "com.fasterxml.jackson.module:jackson-module-parameter-names" }
 java-parser = "com.github.javaparser:javaparser-core:3.+"
 jakarta-annotation = { module = "jakarta.annotation:jakarta.annotation-api" }
+jakarta-validation = { module = "jakarta.validation:jakarta.validation-api" }
 jgit = "org.eclipse.jgit:org.eclipse.jgit:6.+"
 jspecify = "org.jspecify:jspecify:0.+"
 junit-api = { module = "org.junit.jupiter:junit-jupiter-api" }
@@ -64,9 +65,11 @@ spring-data-neo4j = { module = "org.springframework.data:spring-data-neo4j" }
 starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
 starter-core = { module = "org.springframework.boot:spring-boot-starter" }
 starter-jackson = { module = "org.springframework.boot:spring-boot-starter-jackson" }
+starter-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa" }
 starter-log4j2 = { module = "org.springframework.boot:spring-boot-starter-log4j2" }
 starter-security = { module = "org.springframework.boot:spring-boot-starter-security" }
 starter-oauth2-client = { module = "org.springframework.boot:spring-boot-starter-oauth2-client" }
+starter-validation = { module = "org.springframework.boot:spring-boot-starter-validation" }
 starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
 starter-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux" }
 starter-neo4j = { module = "org.springframework.boot:spring-boot-starter-data-neo4j" }
