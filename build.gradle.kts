@@ -1,15 +1,14 @@
 // © Copyright 2023-2024 Caleb Cushing
 // SPDX-License-Identifier: MIT
 
-buildscript {
-  dependencyLocking.lockAllConfigurations()
-}
+buildscript { dependencyLocking { lockAllConfigurations() } }
+
 plugins {
   our.spotless
   alias(libs.plugins.dependency.analysis)
 }
 
-dependencyLocking.lockAllConfigurations()
+dependencyLocking { lockAllConfigurations() }
 
 group = "com.xenoterracide"
 
