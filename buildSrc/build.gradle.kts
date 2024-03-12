@@ -1,14 +1,19 @@
+// © Copyright 2023-2024 Caleb Cushing
 // SPDX-License-Identifier: MIT
-// © Copyright 2023-2024 Caleb Cushing. All rights reserved.
 
 buildscript {
-  dependencyLocking.lockAllConfigurations()
+  dependencyLocking {
+    lockAllConfigurations()
+  }
 }
+
 plugins {
   `kotlin-dsl`
 }
 
-dependencyLocking.lockAllConfigurations()
+dependencyLocking {
+  lockAllConfigurations()
+}
 
 dependencies {
   implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
