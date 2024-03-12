@@ -39,6 +39,10 @@ tasks.withType<Test>().configureEach {
         ),
       )
     }
+    reports {
+      junitXml.required.set(false)
+      html.required.set(false)
+    }
   }
   inputs.dir(rootProject.file("buildSrc/src/main"))
   finalizedBy(available)
