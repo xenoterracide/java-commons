@@ -29,9 +29,12 @@ java {
 
 tasks.withType<Javadoc>().configureEach {
   (options as StandardJavadocDocletOptions).apply {
-    encoding = "UTF-8"
-    addStringOption("tag", "apiNote:a:API Note:")
-    addStringOption("tag", "implNote:a:Implementation Note:")
+    addMultilineStringsOption("tag").value = listOf(
+      "apiSpec:a:API Spec:",
+      "apiNote:a:API Note:",
+      "implSpec:a:Implementation Spec:",
+      "implNote:a:Implementation Note:",
+    )
   }
 }
 
