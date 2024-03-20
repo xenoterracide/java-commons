@@ -4,6 +4,7 @@
 import org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {
+  `java-test-fixtures`
   checkstyle
 }
 
@@ -20,6 +21,10 @@ fun checkstyleConfig(filename: String): File {
 }
 
 tasks.named<Checkstyle>("checkstyleMain") {
+  configFile = checkstyleConfig("main.xml")
+}
+
+tasks.named<Checkstyle>("checkstyleTestFixtures") {
   configFile = checkstyleConfig("main.xml")
 }
 

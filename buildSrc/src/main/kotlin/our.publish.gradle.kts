@@ -8,9 +8,10 @@ plugins {
 
 version = semver.maven
 
+val repo = "java-commons"
 val username = "xenoterracide"
 val githubUrl = "https://github.com"
-val repoShort = "$username/java-commons"
+val repoShort = "$username/$repo"
 
 publishing {
   publications {
