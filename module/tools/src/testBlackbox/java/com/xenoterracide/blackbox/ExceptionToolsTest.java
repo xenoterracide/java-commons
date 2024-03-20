@@ -1,21 +1,23 @@
 // © Copyright 2024 Caleb Cushing
 // SPDX-License-Identifier: Apache-2.0
 
-package com.xenoterracide.tools0.java.function;
+package com.xenoterracide.blackbox;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+import com.xenoterracide.tools.java.function.ExceptionTools;
 import io.vavr.control.Try;
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ExceptionToolsTest {
 
   @Test
   void convertRuntimeExceptionsAreJustRethrown() {
-    assertThat(ExceptionTools.toRuntime(new NullPointerException()))
+    Assertions.assertThat(ExceptionTools.toRuntime(new NullPointerException()))
       .isInstanceOf(NullPointerException.class)
       .hasNoCause();
   }

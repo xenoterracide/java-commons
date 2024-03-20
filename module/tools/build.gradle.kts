@@ -10,7 +10,7 @@ plugins {
 }
 
 dependencies {
-  compileOnlyApi(libs.jspecify)
+  compileOnly(libs.jspecify)
   testImplementation(platform(libs.spring.bom))
   testImplementation(libs.junit.api)
   testImplementation(libs.vavr)
@@ -29,6 +29,7 @@ testing {
         implementation(platform(libs.spring.bom))
         implementation(libs.junit.api)
         implementation(libs.assertj)
+        implementation(libs.vavr)
         implementation(project(path))
 
         runtimeOnly(platform(libs.spring.bom))
@@ -37,12 +38,6 @@ testing {
       }
     }
   }
-}
-
-javaModuleTesting.whitebox(testing.suites["test"]) {
-  requires.add("org.junit.jupiter.api")
-  requires.add("org.assertj.core")
-  requires.add("io.vavr")
 }
 
 tasks.named<Checkstyle>("checkstyleTestBlackbox") {

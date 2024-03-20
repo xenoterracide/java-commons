@@ -1,7 +1,7 @@
 // © Copyright 2024 Caleb Cushing
 // SPDX-License-Identifier: Apache-2.0
 
-package com.xenoterracide.tools0.java.function;
+package com.xenoterracide.tools.java.function;
 
 import java.util.function.Function;
 import java.util.function.Predicate;

@@ -9,5 +9,6 @@ import org.jspecify.annotations.NullMarked;
 @NullMarked module com.xenoterracide.tools.java {
   requires static org.jspecify;
   requires java.base;
-  exports com.xenoterracide.tools0.java.function;
+  exports com.xenoterracide.tools.java.function;
+  exports com.xenoterracide.tools.java.annotation;
 }
