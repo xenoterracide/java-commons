@@ -108,6 +108,10 @@
       <property name="checkFormat" value="$1" />
     </module>
 
+    <!-- https://checkstyle.org/checks/annotation/ -->
+    <module name="MissingDeprecated" />
+    <module name="MissingOverride" />
+
     <!-- Checks for Javadoc comments.                     -->
     <!-- See https://checkstyle.org/config_javadoc.html -->
     <!--
@@ -162,8 +166,18 @@
     <module name="NPathComplexity" />
 
     <!-- Checks for Size Violations https://checkstyle.org/checks/sizes/ -->
-    <module name="MethodLength" />
+    <module name="AnonInnerLength" />
+    <module name="ExecutableStatementCount">
+      <property name="max" value="20" />
+    </module>
+    <module name="LambdaBodyLength" />
+    <module name="MethodCount" />
+    <module name="MethodLength">
+      <property name="max" value="25" />
+    </module>
+    <module name="OuterTypeNumber" />
     <module name="ParameterNumber" />
+    <module name="RecordComponentNumber" />
 
     <!-- whitespace https://checkstyle.org/checks/whitespace/ -->
     <module name="OperatorWrap">
@@ -264,6 +278,7 @@
     <module name="ArrayTypeStyle" />
     <module name="TodoComment" />
     <module name="UpperEll" />
+    <module name="UncommentedMain" />
 
     <module name="SuppressWarningsHolder" />
   </module>
@@ -283,10 +298,7 @@
   <!-- <module name="JavadocPackage"/> -->
 
   <!-- Miscellaneous https://checkstyle.org/checks/misc/ -->
-  <module name="FileLength">
-    <property name="max" value="500" />
-    <property name="fileExtensions" value="java" />
-  </module>
+  <module name="FileLength" /><!-- use method count for SRP instead -->
   <module name="LineLength">
     <property name="max" value="120" />
     <property name="fileExtensions" value="java" />
