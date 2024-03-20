@@ -110,11 +110,11 @@
     </module>
 
 
-    <!-- https://checkstyle.org/checks/annotation/ -->
+    <!-- https://checkstyle.org/checks/annotation/ checked all 2024 -->
     <module name="MissingDeprecated" />
     <module name="MissingOverride" />
 
-    <!-- https://checkstyle.sourceforge.io/checks/javadoc/ -->
+    <!-- https://checkstyle.sourceforge.io/checks/javadoc/ checked all 2024 -->
     <module name="AtclauseOrder" />
     <module name="InvalidJavadocPosition" />
     <module name="JavadocBlockTagLocation" />

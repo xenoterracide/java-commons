@@ -108,20 +108,9 @@
       <property name="checkFormat" value="$1" />
     </module>
 
-    <!-- https://checkstyle.org/checks/annotation/ -->
+    <!-- https://checkstyle.org/checks/annotation/ checked all 2024 -->
     <module name="MissingDeprecated" />
     <module name="MissingOverride" />
-
-    <!-- Checks for Javadoc comments.                     -->
-    <!-- See https://checkstyle.org/config_javadoc.html -->
-    <!--
-    <module name="InvalidJavadocPosition"/>
-    <module name="JavadocMethod"/>
-    <module name="JavadocType"/>
-    <module name="JavadocVariable"/>
-    <module name="JavadocStyle"/>
-    <module name="MissingJavadocMethod"/>
-    -->
 
     <!-- Checks for Naming Conventions https://checkstyle.org/checks/naming/ -->
     <module name="AbbreviationAsWordInName" />
