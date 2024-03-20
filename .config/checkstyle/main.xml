@@ -101,7 +101,8 @@
   <!--- PRETTIER END -->
 
   <module name="TreeWalker">
-    <!-- https://checkstyle.org/config_filters.html#SuppressionFilter -->
+    <!-- https://checkstyle.sourceforge.io/filters/ -->
+    <!-- in case you're dumb again it's CHECKSTYLE.OFF: [checkname|checkname] -->
     <module name="SuppressionCommentFilter">
       <property name="offCommentFormat" value="CHECKSTYLE.OFF\: ([\w\|]+)" />
       <property name="onCommentFormat" value="CHECKSTYLE.ON\: ([\w\|]+)" />
@@ -122,7 +123,9 @@
       <property name="violateExecutionOnNonTightHtml" value="true" />
     </module>
     <module name="JavadocType" />
-    <module name="JavadocVariable" />
+    <module name="JavadocVariable">
+      <property name="scope" value="protected" />
+    </module>
     <module name="MissingJavadocMethod" />
     <module name="MissingJavadocPackage" />
     <module name="MissingJavadocType" />
@@ -191,7 +194,12 @@
       <property name="option" value="eol" />
     </module>
     <module name="EmptyForIteratorPad" />
-    <module name="NoWhitespaceAfter" />
+    <module name="NoWhitespaceAfter">
+      <property
+        name="tokens"
+        value="AT, INC, DEC, UNARY_MINUS, UNARY_PLUS, BNOT, LNOT, DOT, ARRAY_DECLARATOR, INDEX_OP"
+      />
+    </module>
     <module name="CommentsIndentation" />
     <module name="AvoidEscapedUnicodeCharacters">
       <property name="allowNonPrintableEscapes" value="true" />
@@ -235,9 +243,8 @@
     <module name="FallThrough" />
     <module name="EmptyStatement" />
     <module name="EqualsHashCode" />
-    <module name="HiddenField">
-      <property name="ignoreConstructorParameter" value="true" />
-      <property name="ignoreSetter" value="true" />
+    <module name="RequireThis">
+      <property name="validateOnlyOverlapping" value="false" />
     </module>
     <module name="ExplicitInitialization" />
     <module name="IllegalInstantiation" />
@@ -245,9 +252,7 @@
     <module name="IllegalToken" />
     <module name="IllegalType" />
     <module name="InnerAssignment" />
-    <!-- error prone has got this
-    <module name="MissingSwitchDefault"/>
-    -->
+    <module name="MissingSwitchDefault" />
     <module name="MultipleVariableDeclarations" />
     <module name="SimplifyBooleanExpression" />
     <module name="SimplifyBooleanReturn" />
