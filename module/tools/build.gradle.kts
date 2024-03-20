@@ -1,11 +1,8 @@
-// © Copyright 2024 Caleb Cushing
+// © Copyright 2023-2024 Caleb Cushing
 // SPDX-License-Identifier: MIT
 
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
-
-// © Copyright 2023-2024 Caleb Cushing
-// SPDX-License-Identifier: MIT
 
 buildscript { dependencyLocking { lockAllConfigurations() } }
 
