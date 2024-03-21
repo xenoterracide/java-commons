@@ -1,9 +1,6 @@
 // © Copyright 2023-2024 Caleb Cushing
 // SPDX-License-Identifier: MIT
 
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat
-import org.gradle.api.tasks.testing.logging.TestLogEvent
-
 buildscript { dependencyLocking { lockAllConfigurations() } }
 
 plugins {
@@ -36,27 +33,4 @@ testing {
       }
     }
   }
-}
-
-tasks.withType<Test>().configureEach {
-  dependencyLocking { lockAllConfigurations() }
-  useJUnitPlatform()
-  reports {
-    junitXml.required.set(false)
-    html.required.set(false)
-  }
-  testLogging {
-    lifecycle {
-      showStandardStreams = true
-      displayGranularity = 2
-      exceptionFormat = TestExceptionFormat.FULL
-      events.addAll(
-        listOf(
-          TestLogEvent.SKIPPED,
-          TestLogEvent.FAILED,
-        ),
-      )
-    }
-  }
-  inputs.dir(rootProject.file("buildSrc/src/main"))
 }
