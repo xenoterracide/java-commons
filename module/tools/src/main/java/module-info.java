@@ -7,7 +7,8 @@ import org.jspecify.annotations.NullMarked;
  * </p>
  */
 @NullMarked module com.xenoterracide.tools.java {
+  requires static org.jspecify;
   requires java.base;
-  requires org.jspecify;
-  exports com.xenoterracide.tools0.java.function;
+  exports com.xenoterracide.tools.java.function;
+  exports com.xenoterracide.tools.java.annotation;
 }

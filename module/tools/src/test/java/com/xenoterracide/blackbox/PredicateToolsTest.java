@@ -1,9 +1,9 @@
 // © Copyright 2024 Caleb Cushing
 // SPDX-License-Identifier: Apache-2.0
 
-package com.xenoterracide.tools0.java.function;
+package com.xenoterracide.blackbox;
 
-import static com.xenoterracide.tools0.java.function.PredicateTools.prop;
+import static com.xenoterracide.tools.java.function.PredicateTools.prop;
 import static java.util.function.Predicate.isEqual;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
