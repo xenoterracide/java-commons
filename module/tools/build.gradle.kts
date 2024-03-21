@@ -14,9 +14,6 @@ plugins {
 
 dependencies {
   compileOnly(libs.jspecify)
-  testImplementation(platform(libs.spring.bom))
-  testImplementation(libs.junit.api)
-  testImplementation(libs.vavr)
 }
 
 tasks.compileJava {
