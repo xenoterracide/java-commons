@@ -11,4 +11,5 @@ import org.jspecify.annotations.NullMarked;
   requires java.base;
   exports com.xenoterracide.tools.java.function;
   exports com.xenoterracide.tools.java.annotation;
+  exports com.xenoterracide.tools.java.collection;
 }

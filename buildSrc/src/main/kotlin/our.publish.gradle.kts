@@ -15,7 +15,7 @@ val repoShort = "$username/$repo"
 
 publishing {
   publications {
-    create<MavenPublication>("maven") {
+    register<MavenPublication>("maven") {
       from(components["java"])
     }
     withType<MavenPublication>().configureEach {
