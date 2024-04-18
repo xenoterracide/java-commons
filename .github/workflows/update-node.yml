@@ -20,6 +20,7 @@ jobs:
         with:
           fetch-depth: 2
       - uses: actions/setup-node@v4
+      - run: npm install
       - run: npm update
       - uses: peter-evans/create-pull-request@v6
         with:
