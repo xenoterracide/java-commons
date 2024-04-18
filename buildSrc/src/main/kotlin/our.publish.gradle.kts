@@ -6,7 +6,7 @@ plugins {
   id("com.xenoterracide.gradle.semver")
 }
 
-version = semver.maven
+version = semver.gitDescribed
 
 val repo = "java-commons"
 val username = "xenoterracide"
