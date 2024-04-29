@@ -14,7 +14,7 @@ val githubUrl = "https://github.com"
 val repoShort = "$username/$repo"
 
 tasks.register("semver") {
-  println("version: $version")
+  logger.quiet("version: {}", version)
 }
 
 publishing {
