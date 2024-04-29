@@ -13,6 +13,10 @@ val username = "xenoterracide"
 val githubUrl = "https://github.com"
 val repoShort = "$username/$repo"
 
+tasks.register("semver") {
+  logger.quiet("version: {}", version)
+}
+
 publishing {
   publications {
     register<MavenPublication>("maven") {
