@@ -1,13 +1,13 @@
 name: Update Java
 on:
   schedule:
-    #        ┌───────────── minute (0 - 59)
-    #        │ ┌───────────── hour (0 - 23)
-    #        │ │ ┌───────────── day of the month (1 - 31)
-    #        │ │ │ ┌───────────── month (1 - 12 or JAN-DEC)
-    #        │ │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
-    #        * * * * *
-    - cron: "0 2 * * 0" # 2am UTC every Sunday
+    #         ┌───────────── minute (0 - 59)
+    #         │ ┌───────────── hour (0 - 23)
+    #         │ │ ┌───────────── day of the month (1 - 31)
+    #         │ │ │ ┌───────────── month (1 - 12 or JAN-DEC)
+    #         │ │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
+    #         * * * * *
+    - cron: "0 2 * * 0" # 3am UTC every Sunday
   push:
     branches:
       - build/auto-update-java
@@ -33,8 +33,9 @@ jobs:
         with:
           gradle-version: current
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
-      - run: gradlew wrapper --write-locks
+      - run: gradle wrapper --write-locks
       - run: make ci-update-java
+      - run: git remote show origin
       - uses: peter-evans/create-pull-request@v6
         with:
           title: "chore(deps): java"
