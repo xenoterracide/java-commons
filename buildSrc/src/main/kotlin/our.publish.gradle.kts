@@ -13,8 +13,11 @@ val username = "xenoterracide"
 val githubUrl = "https://github.com"
 val repoShort = "$username/$repo"
 
-tasks.register("semver") {
-  logger.quiet("version: {}", version)
+tasks.register("version") {
+  val version = project.version
+  doLast {
+    println(version)
+  }
 }
 
 publishing {
