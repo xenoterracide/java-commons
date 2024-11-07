@@ -1,3 +1,5 @@
+# © Copyright 2024 Caleb Cushing
+# SPDX-License-Identifier: MIT
 HEAD := $(shell git rev-parse --verify HEAD)
 GRADLE_DIR := $(wildcard ./.gradle/)
 BUILD_DIRS := $(wildcard ./build/ */build/ ./module/*/build/)
@@ -14,13 +16,18 @@ define gh_head_run_id
 	gh run list --workflow $(1) --commit $(HEAD) --json databaseId --jq '.[0].["databaseId"]'
 endef
 
-.PHONY: build
-build:
-	./gradlew spotlessApply build
-
 .PHONY: up
 up:
-	./gradlew dependencies --write-locks --quiet 2>&1 > /dev/null
+# success if no output
+	./gradlew dependencies --write-locks --refresh-dependencies --console=plain | grep -e FAILED || exit 0
+
+.PHONY: format
+format:
+	./gradlew spotlessApply --console=plain
+
+.PHONY: build
+build:
+	./gradlew spotlessApply build --console=plain
 
 .PHONY: merge
 merge: create-pr build watch-full merge-squash
@@ -36,10 +43,10 @@ clean-cc: $(CONFIGURATION_CACHE)
 	- rm -rf $(CONFIGURATION_CACHE)
 
 ci-build:
-	./gradlew build buildHealth --build-cache
+	./gradlew build --build-cache --scan
 
 ci-full:
-	./gradlew buildHealth build --no-build-cache --no-configuration-cache
+	./gradlew build --no-build-cache --no-configuration-cache --scan
 
 ci-update-java: clean-lockfiles up-wrapper up up-all-deps
 
@@ -56,13 +63,13 @@ up-wrapper:
 	./gradlew wrapper --write-locks && ./gradlew wrapper
 
 up-all-deps:
-	./gradlew build buildHealth --write-locks --scan
+	./gradlew build --write-locks --scan --console=plain | grep -e FAILED -e https
 
 create-pr:
-	gh pr create || exit 0
+	gh pr create --body "" || exit 0
 
 merge-squash:
-	gh pr merge --squash --delete-branch --auto
+	gh pr merge --squash --delete-branch --auto --body ""
 
 run-url:
 	$(call check_defined, workflow)
