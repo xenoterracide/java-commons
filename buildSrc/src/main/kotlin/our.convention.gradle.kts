@@ -16,3 +16,11 @@ publicationLegal {
   inceptionYear.set(2024)
   spdxLicenseIdentifiers.add("Apache-2.0")
 }
+
+publishing {
+  publications {
+    register<MavenPublication>(project.name) {
+      from(components["java"])
+    }
+  }
+}
