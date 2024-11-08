@@ -1,7 +1,7 @@
 // © Copyright 2024 Caleb Cushing
 // SPDX-License-Identifier: Apache-2.0
 
-package com.xenoterracide.tools.java.test;
+package com.xenoterracide.blackbox;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -8,11 +8,8 @@ import org.jspecify.annotations.NullMarked;
  */
 @NullMarked module com.xenoterracide.tools.java {
   requires static org.jspecify;
+  requires java.base;
+  exports com.xenoterracide.tools.java.function;
   exports com.xenoterracide.tools.java.annotation;
   exports com.xenoterracide.tools.java.collection;
-  exports com.xenoterracide.tools.java.exception;
-  exports com.xenoterracide.tools.java.function;
-  exports com.xenoterracide.tools.java.reflect;
-
-  opens com.xenoterracide.tools.java.annotation;
 }
