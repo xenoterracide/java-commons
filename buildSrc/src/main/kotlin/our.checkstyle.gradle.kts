@@ -1,14 +1,10 @@
 // © Copyright 2023-2024 Caleb Cushing
 // SPDX-License-Identifier: MIT
 
-import org.gradle.accessors.dm.LibrariesForLibs
-
 plugins {
   `java-test-fixtures`
   checkstyle
 }
-
-val libs = the<LibrariesForLibs>()
 
 tasks.withType<Checkstyle>().configureEach {
   isShowViolations = true

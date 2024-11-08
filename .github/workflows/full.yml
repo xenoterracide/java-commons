@@ -8,7 +8,7 @@ on:
 jobs:
   full:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     permissions:
       contents: read
       packages: read
@@ -23,7 +23,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
-      - uses: gradle/actions/setup-gradle@v3
+      - uses: gradle/actions/setup-gradle@v4
         with:
           cache-read-only: true
       - run: make ci-full
