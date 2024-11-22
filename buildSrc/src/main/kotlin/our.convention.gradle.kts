@@ -26,7 +26,6 @@ publishing {
   }
 }
 
-/*
 dependencyAnalysis {
   issues {
     all {
@@ -36,4 +35,3 @@ dependencyAnalysis {
     }
   }
 }
-*/
