@@ -7,6 +7,7 @@ import com.xenoterracide.gradle.convention.publish.GithubPublicRepositoryConfigu
 plugins {
   id("com.xenoterracide.gradle.convention.coverage")
   id("com.xenoterracide.gradle.convention.publish")
+  id("com.autonomousapps.dependency-analysis")
 }
 
 repositoryHost(GithubPublicRepositoryConfiguration())
@@ -21,6 +22,17 @@ publishing {
   publications {
     register<MavenPublication>(project.name) {
       from(components["java"])
+    }
+  }
+}
+
+
+dependencyAnalysis {
+  issues {
+    all {
+      onAny {
+        severity("fail")
+      }
     }
   }
 }
