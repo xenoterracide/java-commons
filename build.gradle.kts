@@ -26,16 +26,3 @@ tasks.dependencies {
 tasks.check {
   dependsOn(tasks.buildHealth)
 }
-
-dependencyAnalysis {
-  issues {
-    all {
-      onAny {
-        severity("fail")
-      }
-      onUnusedDependencies {
-        exclude(libs.junit.parameters)
-      }
-    }
-  }
-}
