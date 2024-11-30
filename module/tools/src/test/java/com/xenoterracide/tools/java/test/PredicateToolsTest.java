@@ -1,7 +1,7 @@
 // © Copyright 2024 Caleb Cushing
 // SPDX-License-Identifier: Apache-2.0
 
-package com.xenoterracide.blackbox;
+package com.xenoterracide.tools.java.test;
 
 import static com.xenoterracide.tools.java.function.PredicateTools.prop;
 import static java.util.function.Predicate.isEqual;
