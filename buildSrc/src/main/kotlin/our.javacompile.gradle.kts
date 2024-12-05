@@ -1,4 +1,4 @@
-// Copyright 2023 - 2024 Caleb Cushing
+// SPDX-FileCopyrightText: Copyright © 2023 - 2024 Caleb Cushing
 //
 // SPDX-License-Identifier: MIT
 
@@ -64,7 +64,7 @@ tasks.withType<JavaCompile>().configureEach {
     disable("InvalidInlineTag") // false? positive on @snippet
     disableWarningsInGeneratedCode.set(true)
     excludedPaths.set(".*/build/generated/sources/annotationProcessor/.*")
-    option("NullAway:AnnotatedPackages", "com.xenoterracide")
+    option("NullAway:AnnotatedPackages", listOf("com", "org", "net", "io", "dev", "graphql").joinToString(","))
 
     val errors =
       mutableListOf(
