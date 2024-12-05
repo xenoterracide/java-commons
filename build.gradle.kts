@@ -28,7 +28,7 @@ tasks.dependencies {
 }
 
 tasks.check {
-  this.dependsOn(tasks.buildHealth)
+  dependsOn(tasks.buildHealth)
 }
 
 dependencyAnalysis {

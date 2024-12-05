@@ -16,4 +16,5 @@ import org.jspecify.annotations.NullMarked;
   exports com.xenoterracide.tools.java.function;
   exports com.xenoterracide.tools.java.annotation;
   exports com.xenoterracide.tools.java.collection;
+  exports com.xenoterracide.tools.java.util;
 }
