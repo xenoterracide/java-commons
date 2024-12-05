@@ -9,7 +9,7 @@ import org.jspecify.annotations.Nullable;
 /**
  * Utility methods for working with objects.
  */
-public class ObjectTools {
+public final class ObjectTools {
 
   private ObjectTools() {}
 
