@@ -1,10 +1,13 @@
-// © Copyright 2023-2024 Caleb Cushing
+// Copyright 2023 - 2024 Caleb Cushing
+//
 // SPDX-License-Identifier: MIT
 
 rootProject.name = "java-commons"
 
 rootDir.resolve("module").listFiles()?.forEach { file ->
-  if (file.isDirectory && file?.list { _, name -> name == "build.gradle.kts" }
+  if (file.isDirectory &&
+    file
+      ?.list { _, name -> name == "build.gradle.kts" }
       ?.isNotEmpty() == true
   ) {
     val name = file.name

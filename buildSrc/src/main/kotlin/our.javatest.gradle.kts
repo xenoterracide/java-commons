@@ -1,9 +1,11 @@
-// © Copyright 2023-2024 Caleb Cushing
+// Copyright 2023 - 2024 Caleb Cushing
+//
 // SPDX-License-Identifier: MIT
 
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.gradle.kotlin.dsl.KotlinClosure2
 
 plugins {
   `java-library`
@@ -18,12 +20,13 @@ dependencies {
   testRuntimeOnly(libs.bundles.junit.platform)
 }
 
-val available = tasks.register("tests available") {
-  val java: Provider<FileCollection> = sourceSets.test.map { it.java }
-  doLast {
-    if (java.get().isEmpty) throw RuntimeException("no tests found")
+val available =
+  tasks.register("tests available") {
+    val java: Provider<FileCollection> = sourceSets.test.map { it.java }
+    doLast {
+      if (java.get().isEmpty) throw RuntimeException("no tests found")
+    }
   }
-}
 
 tasks.withType<Test>().configureEach {
   useJUnitPlatform()

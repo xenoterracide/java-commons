@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: Copyright © 2024 Caleb Cushing
+
+SPDX-License-Identifier: CC-BY-NC-4.0
+-->
+
 # Contributing
 
 ## Languages
