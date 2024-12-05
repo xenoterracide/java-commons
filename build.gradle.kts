@@ -1,4 +1,4 @@
-// Copyright 2023 - 2024 Caleb Cushing
+// SPDX-FileCopyrightText: Copyright © 2023 - 2024 Caleb Cushing
 //
 // SPDX-License-Identifier: MIT
 
@@ -7,7 +7,7 @@ import org.semver4j.Semver
 buildscript { dependencyLocking { lockAllConfigurations() } }
 
 plugins {
-  `java-platform`
+  base
   alias(libs.plugins.dependency.analysis)
   alias(libs.plugins.semver)
 }
