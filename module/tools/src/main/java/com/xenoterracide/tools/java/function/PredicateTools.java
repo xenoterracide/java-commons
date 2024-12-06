@@ -16,7 +16,7 @@ public final class PredicateTools {
   private PredicateTools() {}
 
   /**
-   * Allows for simple filtering based on a property of an object.
+   * Allows for simple filtering based on a property of an object, or any other method or extraction function.
    * {@snippet lang = "java":
    *   record TestRecord(String name) {}
    * }
