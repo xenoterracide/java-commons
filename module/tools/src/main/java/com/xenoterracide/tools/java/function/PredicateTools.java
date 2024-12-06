@@ -17,10 +17,10 @@ public final class PredicateTools {
 
   /**
    * Allows for simple filtering based on a property of an object.
-   * {@snippet :
+   * {@snippet lang = "java":
    *   record TestRecord(String name) {}
    * }
-   * {@snippet :
+   * {@snippet lang = "java":
    *   Stream.of(new TestRecord("Caleb"), new TestRecord("Bob"))
    *     .filter(is(TestRecord::name, Predicate.isEqual("Caleb")))
    *     .collect(Collectors.toList()); // [TestRecord[name=Caleb]]
