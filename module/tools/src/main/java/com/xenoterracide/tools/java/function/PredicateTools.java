@@ -16,15 +16,15 @@ public final class PredicateTools {
   private PredicateTools() {}
 
   /**
-   * Allows for simple filtering based on a property of an object.
-   * {@snippet :
+   * Allows for simple filtering based on a property of an object, or any other method or extraction function.
+   * {@snippet lang = "java":
    *   record TestRecord(String name) {}
    * }
-   * {@snippet :
+   * {@snippet lang = "java":
    *   Stream.of(new TestRecord("Caleb"), new TestRecord("Bob"))
-   *     .filter(prop(TestRecord::name, Predicate.isEqual("Caleb")))
+   *     .filter(is(TestRecord::name, Predicate.isEqual("Caleb")))
    *     .collect(Collectors.toList()); // [TestRecord[name=Caleb]]
-   * }
+   *}
    *
    * @param <T>       the type parameter
    * @param <PROP>    the type parameter
@@ -32,7 +32,7 @@ public final class PredicateTools {
    * @param predicate the predicate
    * @return the predicate
    */
-  public static @NonNull <T, PROP> Predicate<T> prop(
+  public static @NonNull <T, PROP> Predicate<T> is(
     @NonNull Function<T, PROP> extractor,
     @NonNull Predicate<PROP> predicate
   ) {
