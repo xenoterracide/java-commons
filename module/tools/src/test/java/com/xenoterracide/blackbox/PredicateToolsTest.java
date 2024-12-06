@@ -4,7 +4,7 @@
 
 package com.xenoterracide.blackbox;
 
-import static com.xenoterracide.tools.java.function.PredicateTools.prop;
+import static com.xenoterracide.tools.java.function.PredicateTools.is;
 import static java.util.function.Predicate.isEqual;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -14,11 +14,11 @@ import org.junit.jupiter.api.Test;
 class PredicateToolsTest {
 
   @Test
-  void propTest() {
+  void isTest() {
     var t = new TestRecord("Caleb");
 
-    var isEqual = prop(TestRecord::name, isEqual(t.name())).test(t);
-    var isNotEqual = prop(TestRecord::name, isEqual(t.name()).negate()).test(t);
+    var isEqual = is(TestRecord::name, isEqual(t.name())).test(t);
+    var isNotEqual = is(TestRecord::name, isEqual(t.name()).negate()).test(t);
 
     assertThat(isEqual).isTrue();
     assertThat(isNotEqual).isFalse();
@@ -26,11 +26,11 @@ class PredicateToolsTest {
 
   @Test
   @SuppressWarnings("NullAway")
-  void propArgNulls() {
+  void isArgNulls() {
     var t = new TestRecord("Caleb");
 
-    var extractorNull = prop(null, isEqual(null));
-    var predNull = prop(TestRecord::name, null);
+    var extractorNull = is(null, isEqual(null));
+    var predNull = is(TestRecord::name, null);
 
     assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> extractorNull.test(t));
     assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> predNull.test(t));
