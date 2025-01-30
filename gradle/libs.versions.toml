@@ -9,7 +9,7 @@ spring = "3.+"
 
 [libraries]
 api-guardian = { module = "org.apiguardian:apiguardian-api" }
-assertj = "org.assertj:assertj-core:3+"
+assertj = "org.assertj:assertj-core:3.27.3"
 autoservice = "com.google.auto.service:auto-service:1.+"
 checker-annotations = { module = "org.checkerframework:checker-qual", version.ref = "checker" }
 checker-core = { module = "org.checkerframework:checker", version.ref = "checker" }
