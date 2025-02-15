@@ -1,8 +1,8 @@
-// SPDX-FileCopyrightText: Copyright © 2023 - 2024 Caleb Cushing
+import org.semver4j.Semver
+
+// SPDX-FileCopyrightText: Copyright © 2023 - 2025 Caleb Cushing
 //
 // SPDX-License-Identifier: MIT
-
-import org.semver4j.Semver
 
 buildscript { dependencyLocking { lockAllConfigurations() } }
 
@@ -15,13 +15,11 @@ plugins {
 dependencyLocking { lockAllConfigurations() }
 
 group = "com.xenoterracide"
-
 version =
   providers
     .environmentVariable("IS_PUBLISHING")
-    .map { semver.gitDescribed }
-    .orElse(Semver("0.0.0"))
-    .get()
+    .flatMap { semver.provider }
+    .getOrElse(Semver.ZERO)
 
 tasks.dependencies {
   dependsOn(subprojects.map { it.tasks.dependencies })
