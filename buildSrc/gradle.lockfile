@@ -1,9 +1,11 @@
 # This is a Gradle generated file for dependency locking.
 # Manual edits can break the build and are not advised.
 # This file is expected to be part of source control.
-com.github.spotbugs.snom:spotbugs-gradle-plugin:6.1.5=buildScriptClasspath,compileClasspath,runtimeClasspath
+com.github.spotbugs.snom:spotbugs-gradle-plugin:6.1.5=buildScriptClasspath,runtimeClasspath
+com.github.spotbugs:com.github.spotbugs.gradle.plugin:6.1.5=buildScriptClasspath,runtimeClasspath
 com.xenoterracide.gradle.convention:coverage:0.2.1=buildScriptClasspath,compileClasspath,runtimeClasspath
 com.xenoterracide.gradle.convention:publish:0.2.1=buildScriptClasspath,compileClasspath,runtimeClasspath
+com.xenoterracide.gradle.convention:spotbugs:0.2.1=buildScriptClasspath,compileClasspath,runtimeClasspath
 net.ltgt.gradle:gradle-errorprone-plugin:4.1.0=buildScriptClasspath,compileClasspath,runtimeClasspath
 org.jetbrains.intellij.deps:trove4j:1.0.20200330=kotlinBuildToolsApiClasspath,kotlinCompilerClasspath
 org.jetbrains.kotlin:kotlin-assignment-compiler-plugin-embeddable:2.0.21=kotlinCompilerPluginClasspathMain
