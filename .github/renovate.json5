@@ -21,7 +21,13 @@
       enabled: false,
     },
     {
-      matchManagers: ["asdf", "github-actions"],
+      matchManagers: ["asdf"],
+      groupName: "asdf",
+      schedule: ["* 0-6 * * 1"],
+      automerge: true,
+    },
+    {
+      matchManagers: ["github-actions"],
       schedule: ["* 0-6 * * 1"],
       automerge: true,
     },
