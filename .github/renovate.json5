@@ -6,6 +6,7 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: ["config:recommended"],
   dependencyDashboard: true,
+  automergeStrategy: "rebase",
   hostRules: [
     {
       hostType: "maven",
@@ -15,16 +16,30 @@
   packageRules: [
     {
       description: "Only allow major standard upgrades",
-      matchManagers: ["gradle", "gradle-wrapper"],
+      matchManagers: ["gradle"],
       matchUpdateTypes: ["minor", "patch", "pin"],
       enabled: false,
     },
     {
-      matchManagers: ["asdf", "github-actions"],
+      matchManagers: ["asdf"],
+      groupName: "asdf",
+      schedule: ["* 0-6 * * 1"],
+      automerge: true,
+    },
+    {
+      matchManagers: ["github-actions"],
+      schedule: ["* 0-6 * * 1"],
       automerge: true,
     },
     {
       matchManagers: ["npm"],
+      groupName: "npm",
+      schedule: ["* 0-6 * * 1"],
+      matchUpdateTypes: ["minor", "patch", "pin"],
+      automerge: true,
+    },
+    {
+      matchManagers: ["gradle-wrapper"],
       matchUpdateTypes: ["minor", "patch", "pin"],
       automerge: true,
     },
