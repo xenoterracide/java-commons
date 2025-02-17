@@ -7,6 +7,5 @@ plugins {
   id("our.bom")
   id("our.javacompile")
   id("our.javatest")
-  id("our.checkstyle")
   id("our.convention")
 }
