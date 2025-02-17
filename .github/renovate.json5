@@ -22,13 +22,13 @@
     },
     {
       matchManagers: ["asdf", "github-actions"],
-      schedule: ["* 0-3 * * 1"],
+      schedule: ["* 0-6 * * 1"],
       automerge: true,
     },
     {
       matchManagers: ["npm"],
       groupName: "npm",
-      schedule: ["* 0-3 * * 1"],
+      schedule: ["* 0-6 * * 1"],
       matchUpdateTypes: ["minor", "patch", "pin"],
       automerge: true,
     },
