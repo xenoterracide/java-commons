@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: Copyright © 2024 Caleb Cushing
+# SPDX-FileCopyrightText: Copyright © 2024 - 2025 Caleb Cushing
 #
 # SPDX-License-Identifier: MIT
 
@@ -21,14 +21,14 @@ endef
 .PHONY: up
 up:
 # success if no output
-	./gradlew dependencies --write-locks --refresh-dependencies --console=plain | grep -e FAILED || exit 0
+	./gradlew dependencies --write-locks --console=plain | grep -e FAILED || exit 0
 
 .PHONY: build
 build:
 	./gradlew build --console=plain
 
 .PHONY: merge
-merge: create-pr build watch-full merge-squash
+merge: merge-head create-pr build watch-full watch-publish merge-squash
 
 .PHONY: clean
 clean:
@@ -66,8 +66,11 @@ up-all-deps:
 create-pr:
 	gh pr create --body "" || exit 0
 
+merge-head:
+	git merge origin/HEAD
+
 merge-squash:
-	gh pr merge --squash --delete-branch --auto --body ""
+	gh pr merge --squash --delete-branch --auto
 
 run-url:
 	$(call check_defined, workflow)
@@ -78,4 +81,7 @@ watch:
 	@gh run watch $$($(call gh_head_run_id, $(workflow))) --exit-status
 
 watch-full:
-	@gh run watch $$($(call gh_head_run_id, "Full")) --exit-status
+	@gh run watch $$($(call gh_head_run_id, "full")) --exit-status
+
+watch-publish:
+	@gh run watch $$($(call gh_head_run_id, "publish")) --exit-status
