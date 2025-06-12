@@ -1,4 +1,5 @@
-// © Copyright 2023-2024 Caleb Cushing
+// Copyright 2023 - 2025 Caleb Cushing
+//
 // SPDX-License-Identifier: MIT
 
 plugins {
@@ -16,10 +17,12 @@ configurations.configureEach {
   resolutionStrategy {
     componentSelection {
       all {
-        val spotbugs = Regex("^spotbugs.*")
-        if (!name.matches(spotbugs) && !candidate.module.matches(spotbugs)) {
-          val nonRelease = Regex("^[\\d.]+-(M|ea|beta|alpha).*$")
+        val nonRelease = Regex("^[\\d.]+-(RC|M|ea|beta|alpha).*$")
+        if (candidate.group != "com.xenoterracide") {
           if (candidate.version.matches(nonRelease)) reject("no pre-release")
+          if (candidate.version.endsWith("-SNAPSHOT")) reject("no snapshots")
+        } else if (candidate.version.matches(nonRelease)) {
+          logger.info("allowing: {}", candidate)
         }
 
         if (candidate.module == "nullaway") {
