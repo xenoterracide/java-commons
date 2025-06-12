@@ -44,6 +44,7 @@ plugin-convention-checkstyle = "com.xenoterracide.gradle.convention:checkstyle:0
 plugin-convention-coverage = "com.xenoterracide.gradle.convention:coverage:0.2.+"
 plugin-convention-publish = "com.xenoterracide.gradle.convention:publish:0.2.+"
 plugin-convention-spotbugs = "com.xenoterracide.gradle.convention:spotbugs:0.2.+"
+plugin-dependency-analysis = "com.autonomousapps:dependency-analysis-gradle-plugin:2.+"
 plugin-errorprone = "net.ltgt.gradle:gradle-errorprone-plugin:4.+"
 plugin-semver = "com.xenoterracide:gradle-semver:0.+"
 plugin-spotbugs = "com.github.spotbugs:com.github.spotbugs.gradle.plugin:6.+"
@@ -88,7 +89,7 @@ spring-test = ["spring-test", "spring-boot-test-core", "spring-boot-autoconfigur
 
 [plugins]
 module-testing = { id = "org.gradlex.java-module-testing", version = "1.+" }
-dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.+" }
+dependency-analysis = { id = "com.autonomousapps.dependency-analysis" }
 gradle-plugin-publish = { id = "com.gradle.plugin-publish", version = "1.+" }
 shadow = { id = "com.github.johnrengelman.shadow", version = "8.+" }
 semver = { id = "com.xenoterracide.gradle.semver", version = "0.12.+" }
