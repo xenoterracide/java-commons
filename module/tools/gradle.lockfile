@@ -86,6 +86,6 @@ org.pcollections:pcollections:4.0.1=annotationProcessor,testAnnotationProcessor,
 org.reflections:reflections:0.10.2=checkstyle
 org.slf4j:slf4j-api:2.0.17=spotbugs,spotbugsSlf4j
 org.slf4j:slf4j-simple:2.0.17=spotbugsSlf4j
-org.springframework.boot:spring-boot-dependencies:3.5.2=compileClasspath,testCompileClasspath,testRuntimeClasspath
+org.springframework.boot:spring-boot-dependencies:3.5.3=compileClasspath,testCompileClasspath,testRuntimeClasspath
 org.xmlresolver:xmlresolver:5.2.2=spotbugs
 empty=runtimeClasspath,spotbugsPlugins,testFixturesCompileClasspath,testFixturesRuntimeClasspath
