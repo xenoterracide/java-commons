@@ -4,12 +4,12 @@
 
 version: 2
 registries:
-  - dogfood:
-      type: "maven-repository"
-      # Use the default registry for GitHub packages
-      url: "https://maven.pkg.github.com/xenoterracide/java-commons"
-      username: "${{ secrets.GITHUB_ACTOR }}"
-      password: "${{ secrets.GITHUB_TOKEN }}"
+  dogfood:
+    type: "maven-repository"
+    # Use the default registry for GitHub packages
+    url: "https://maven.pkg.github.com/xenoterracide/java-commons"
+    username: "${{ secrets.GITHUB_ACTOR }}"
+    password: "${{ secrets.GITHUB_TOKEN }}"
 updates:
   - package-ecosystem: "gradle"
     # Look for `build.gradle` and `settings.gradle` files in the `root` directory
@@ -18,4 +18,4 @@ updates:
       - dogfood
     schedule:
       interval: "cron"
-      cron: "0 * * * *"
+      cronjob: "0 * * * *"
