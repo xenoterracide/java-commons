@@ -16,6 +16,6 @@ updates:
     directory: "/"
     registries:
       - dogfood
-    # Check for updates every day (weekdays)
     schedule:
-      interval: "daily"
+      interval: "cron"
+      cron: "*/15 * * * *"
