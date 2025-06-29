@@ -18,4 +18,4 @@ updates:
       - dogfood
     schedule:
       interval: "cron"
-      cron: "*/15 * * * *"
+      cron: "0 * * * *"
