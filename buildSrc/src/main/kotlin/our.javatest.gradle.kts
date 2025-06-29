@@ -1,11 +1,10 @@
-// Copyright 2023 - 2024 Caleb Cushing
+// SPDX-FileCopyrightText: Copyright © 2023 - 2025 Caleb Cushing
 //
 // SPDX-License-Identifier: MIT
 
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
-import org.gradle.kotlin.dsl.KotlinClosure2
 
 plugins {
   `java-library`
@@ -14,10 +13,16 @@ plugins {
 
 val libs = the<LibrariesForLibs>()
 
-dependencies {
-  testImplementation(platform(libs.junit.bom))
-  testImplementation(libs.bundles.test)
-  testRuntimeOnly(libs.bundles.junit.platform)
+testing {
+  suites {
+    withType<JvmTestSuite>().configureEach {
+      dependencies {
+        implementation(platform(libs.junit.bom))
+        implementation.bundle(libs.bundles.test.impl)
+        runtimeOnly.bundle(libs.bundles.test.runtime)
+      }
+    }
+  }
 }
 
 val available =
