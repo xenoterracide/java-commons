@@ -37,6 +37,7 @@ dependencyAnalysis {
       }
       onUnusedDependencies {
         exclude(libs.junit.parameters)
+        exclude(libs.junit.jupiter)
       }
     }
   }
