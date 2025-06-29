@@ -1,0 +1,21 @@
+# SPDX-FileCopyrightText: Copyright © 2025 Caleb Cushing
+#
+# SPDX-License-Identifier: CC0-1.0
+
+version: 2
+registries:
+  - dogfood:
+      type: "maven-repository"
+      # Use the default registry for GitHub packages
+      url: "https://maven.pkg.github.com/xenoterracide/java-commons"
+      username: "${{ secrets.GITHUB_ACTOR }}"
+      password: "${{ secrets.GITHUB_TOKEN }}"
+updates:
+  - package-ecosystem: "gradle"
+    # Look for `build.gradle` and `settings.gradle` files in the `root` directory
+    directory: "/"
+    registries:
+      - dogfood
+    # Check for updates every day (weekdays)
+    schedule:
+      interval: "daily"
