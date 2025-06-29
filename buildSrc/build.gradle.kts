@@ -14,6 +14,7 @@ dependencies {
   implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
   implementation(libs.plugin.convention.publish)
   implementation(libs.plugin.errorprone)
+  implementation(libs.plugin.dependency.analysis)
 
   runtimeOnly(libs.plugin.convention.checkstyle)
   runtimeOnly(libs.plugin.convention.coverage)
