@@ -17,5 +17,4 @@ updates:
     registries:
       - dogfood
     schedule:
-      interval: "cron"
-      cronjob: "0 * * * *"
+      interval: "daily"
