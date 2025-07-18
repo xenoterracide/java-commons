@@ -13,7 +13,7 @@ on:
   workflow_call:
 jobs:
   full:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
       contents: read
@@ -35,13 +35,3 @@ jobs:
         with:
           cache-read-only: true
       - run: make ci-full
-  dependabot:
-    needs: full
-    runs-on: ubuntu-24.04
-    if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'}}
-    steps:
-      - name: Enable auto-merge for Dependabot PRs
-        run: gh pr merge --auto --merge "$PR_URL" # Use Github CLI to merge automatically the PR
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
