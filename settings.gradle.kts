@@ -1,4 +1,4 @@
-// Copyright 2023 - 2024 Caleb Cushing
+// Copyright 2023 - 2025 Caleb Cushing
 //
 // SPDX-License-Identifier: MIT
 
@@ -25,7 +25,7 @@ pluginManagement {
 }
 
 plugins {
-  id("com.gradle.develocity") version ("3.18.2")
+  id("com.gradle.develocity") version "4.2"
 }
 
 develocity {
