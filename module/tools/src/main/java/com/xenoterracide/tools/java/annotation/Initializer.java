@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright © 2024 Caleb Cushing
+// SPDX-FileCopyrightText: Copyright © 2024 - 2025 Caleb Cushing
 //
 // SPDX-License-Identifier: Apache-2.0
 
@@ -11,5 +11,4 @@ import java.lang.annotation.Target;
  * The interface Initializer.
  */
 @Target(ElementType.METHOD)
-public @interface Initializer {
-}
+public @interface Initializer {}
