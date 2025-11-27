@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright © 2024 Caleb Cushing
+// SPDX-FileCopyrightText: Copyright © 2024 - 2025 Caleb Cushing
 //
 // SPDX-License-Identifier: Apache-2.0
 
@@ -6,7 +6,6 @@ package com.xenoterracide.tools.java.collection;
 
 import java.util.Collection;
 import java.util.function.Predicate;
-import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -27,7 +26,7 @@ public final class CollectionTools {
   public static <T> void addIf(
     @Nullable Collection<? super T> collection,
     @Nullable T element,
-    @NonNull Predicate<Collection<? super T>> condition
+    Predicate<Collection<? super T>> condition
   ) {
     if (collection == null) {
       return;
