@@ -1,4 +1,5 @@
-// © Copyright 2023-2024 Caleb Cushing
+// Copyright 2023 - 2025 Caleb Cushing
+//
 // SPDX-License-Identifier: MIT
 
 buildscript { dependencyLocking { lockAllConfigurations() } }
@@ -14,7 +15,7 @@ dependencies {
 }
 
 tasks.compileJava {
-  options.release = 11
+  options.release = 17
 }
 
 testing {
