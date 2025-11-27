@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright © 2024 Caleb Cushing
+// SPDX-FileCopyrightText: Copyright © 2024 - 2025 Caleb Cushing
 //
 // SPDX-License-Identifier: Apache-2.0
 
@@ -6,7 +6,6 @@ package com.xenoterracide.tools.java.function;
 
 import java.util.function.Function;
 import java.util.function.Predicate;
-import org.jspecify.annotations.NonNull;
 
 /**
  * The type Predicate tools.
@@ -32,10 +31,7 @@ public final class PredicateTools {
    * @param predicate the predicate
    * @return the predicate
    */
-  public static @NonNull <T, PROP> Predicate<T> is(
-    @NonNull Function<T, PROP> extractor,
-    @NonNull Predicate<PROP> predicate
-  ) {
+  public static <T, PROP> Predicate<T> is(Function<T, PROP> extractor, Predicate<PROP> predicate) {
     return t -> predicate.test(extractor.apply(t));
   }
 }

@@ -12,6 +12,7 @@ plugins {
 
 dependencies {
   compileOnly(libs.jspecify)
+  spotbugs(libs.jspecify)
 }
 
 tasks.compileJava {
