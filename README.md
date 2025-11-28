@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: Copyright © 2024 - 2025 Caleb Cushing
+SPDX-FileCopyrightText: Copyright © 2024, 2025 Caleb Cushing
 
 SPDX-License-Identifier: CC-BY-NC-4.0
 -->
@@ -19,6 +19,28 @@ add a way to export these to your `PATH` in your `~/.profile`
 
 - [Gradle](https://docs.gradle.org/current/userguide/command_line_interface.html)
 - [Yarn 4](https://yarnpkg.com/getting-started/install) (via Corepack)
+
+## Running tests
+
+The simplest way to run all verification tasks (unit tests, static analysis, etc.) for a top‑level project is to execute the `check` task.
+
+From this project directory:
+
+```sh
+cd java-commons
+./gradlew check
+```
+
+Or from the monorepo root targeting this build:
+
+```sh
+./gradlew -p java-commons check
+```
+
+Notes:
+
+- `check` will execute all configured test suites (e.g., unit tests). Builds here use our shared `our.javatest` conventions.
+- Zero‑tests fail‑fast: modules that apply our test conventions must include at least one test under `src/test/java` (or Kotlin equivalent) or the build will fail.
 
 #### Fetching Dependencies
 
