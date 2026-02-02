@@ -1,0 +1,90 @@
+# SPDX-FileCopyrightText: Copyright © 2026 Caleb Cushing
+#
+# SPDX-License-Identifier: CC0-1.0
+
+stages:
+  - ci
+  - full
+  - maintenance
+
+variables:
+  GIT_DEPTH: "0"
+  GRADLE_USER_HOME: "$CI_PROJECT_DIR/.gradle"
+
+.build-rules: &build_rules
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+build:
+  stage: ci
+  image: eclipse-temurin:21
+  <<: *build_rules
+  cache:
+    key:
+      files:
+        - gradle/wrapper/gradle-wrapper.properties
+    paths:
+      - .gradle/caches
+      - .gradle/wrapper
+  script:
+    - ./gradlew build --console=plain
+
+license:
+  stage: ci
+  image: python:3-alpine
+  <<: *build_rules
+  script:
+    - pip install -r requirements.txt
+    - reuse lint
+
+format:
+  stage: ci
+  image: node:lts-alpine
+  <<: *build_rules
+  cache:
+    key:
+      files:
+        - package.json
+        - yarn.lock
+    paths:
+      - .yarn/cache
+  script:
+    - corepack enable
+    - yarn install --immutable --inline-builds --check-resolutions
+    - yarn exec prettier --ignore-unknown --check "**"
+
+format-kotlin:
+  stage: ci
+  image: ubuntu:latest
+  <<: *build_rules
+  script:
+    - apt-get update
+    - apt-get install -y --no-install-recommends ca-certificates curl git unzip openjdk-21-jdk
+    - git clone https://github.com/asdf-vm/asdf.git "$HOME/.asdf" --branch v0.14.1
+    - . "$HOME/.asdf/asdf.sh"
+    - asdf plugin add ktlint
+    - asdf install ktlint
+    - export PATH="$HOME/.asdf/shims:$PATH"
+    - ktlint "*.gradle.kts" "**/*.gradle.kts"
+
+full:
+  stage: full
+  image: eclipse-temurin:21
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  script:
+    - ./gradlew build --no-build-cache --no-configuration-cache --scan
+
+renovate:
+  stage: maintenance
+  image: renovate/renovate:latest
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+  variables:
+    RENOVATE_PLATFORM: gitlab
+    RENOVATE_ENDPOINT: https://gitlab.com/api/v4
+    RENOVATE_CONFIG_FILE: .github/renovate.json5
+    RENOVATE_REPOSITORIES: $CI_PROJECT_PATH
+  script:
+    - renovate

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright © 2024 - 2025 Caleb Cushing
+// SPDX-FileCopyrightText: Copyright © 2024 - 2026 Caleb Cushing
 //
 // SPDX-License-Identifier: CC0-1.0
 
@@ -9,12 +9,6 @@
   timezone: "UTC",
   automergeStrategy: "rebase",
   // Managers config will be applied via packageRules below
-  hostRules: [
-    {
-      hostType: "maven",
-      matchHost: "https://maven.pkg.github.com",
-    },
-  ],
   packageRules: [
     {
       // Runs during the 03:00 UTC hour daily (scheduled after update-java at 03:00)
@@ -59,7 +53,7 @@
       automerge: true,
     },
     {
-      matchManagers: ["github-actions"],
+      matchManagers: ["gitlabci"],
       automerge: true,
     },
     {

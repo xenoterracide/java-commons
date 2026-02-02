@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright © 2023 - 2025 Caleb Cushing
+// SPDX-FileCopyrightText: Copyright © 2023 - 2026 Caleb Cushing
 //
 // SPDX-License-Identifier: MIT
 
@@ -24,7 +24,7 @@ java {
   withJavadocJar()
   withSourcesJar()
   toolchain {
-    languageVersion.set(JavaLanguageVersion.of(25))
+    languageVersion.set(JavaLanguageVersion.of(21))
   }
 }
 
