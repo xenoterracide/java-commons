@@ -88,6 +88,7 @@ full:
   timeout: 10m
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == "develop"
   <<: *gradle-cache
   variables:
     GRADLE_ENCRYPTION_KEY: "$GRADLE_ENCRYPTION_KEY"
