@@ -19,6 +19,7 @@ add a way to export these to your `PATH` in your `~/.profile`
 
 - [Gradle](https://docs.gradle.org/current/userguide/command_line_interface.html)
 - [Yarn 4](https://yarnpkg.com/getting-started/install) (via Corepack)
+- [glab](https://gitlab.com/gitlab-org/cli) (for `yarn run merge`)
 
 #### Fetching Dependencies
 
@@ -53,10 +54,10 @@ pip-compile -o requirements.txt pyproject.toml
 pip install -r requirements.txt && git config core.hooksPath .config/git/hooks
 ```
 
-## Committing
+## Local helpers
 
-Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
-
-# License
-
-Apache 2.0
+```sh
+yarn run up
+yarn run cleaner
+yarn run merge
+```
