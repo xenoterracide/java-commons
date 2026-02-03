@@ -4,15 +4,20 @@
   "private": true,
   "license": "Apache-2.0",
   "devDependencies": {
+    "@github/copilot": "^0.0.400",
     "@prettier/plugin-xml": "^3.4.2",
     "git-conventional-commits": "^2.8.0",
     "lint-staged": "^16.2.1",
     "prettier": "^3.6.2",
     "prettier-plugin-java": "^2.7.5",
     "prettier-plugin-properties": "^0.3.0",
-    "prettier-plugin-toml": "^2.0.6"
+    "prettier-plugin-toml": "^2.0.6",
+    "rimraf": "^6.1.2"
   },
   "scripts": {
-    "setup": "pip install -r requirements.txt && git config core.hooksPath .config/git/hooks"
+    "setup": "pip install -r requirements.txt && git config core.hooksPath .config/git/hooks",
+    "up": "./scripts/up.sh",
+    "cleaner": "rimraf ./build/ ./*/build/ ./module/*/build/ ./.gradle/",
+    "merge": "./scripts/merge.sh"
   }
 }
