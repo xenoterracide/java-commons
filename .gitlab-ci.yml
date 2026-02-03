@@ -30,6 +30,7 @@ variables:
 license:
   stage: lint
   image: python:3-alpine
+  timeout: 2m
   <<: *build_rules
   script:
     - pip install -r requirements.txt
@@ -38,6 +39,7 @@ license:
 format:
   stage: lint
   image: node:lts-alpine
+  timeout: 2m
   <<: *build_rules
   cache:
     key:
@@ -57,6 +59,7 @@ format:
 format-kotlin:
   stage: lint
   image: eclipse-temurin:21-alpine
+  timeout: 2m
   <<: *build_rules
   variables:
     KTLINT_VERSION: "1.8.0"
@@ -70,6 +73,7 @@ format-kotlin:
 build:
   stage: build
   image: eclipse-temurin:21-alpine
+  timeout: 10m
   <<: *build_rules
   <<: *gradle-cache
   variables:
@@ -80,6 +84,7 @@ build:
 full:
   stage: build
   image: eclipse-temurin:21-alpine
+  timeout: 10m
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
   <<: *gradle-cache
