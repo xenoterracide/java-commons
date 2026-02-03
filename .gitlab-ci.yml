@@ -10,25 +10,32 @@ stages:
 variables:
   GIT_DEPTH: "0"
   GRADLE_USER_HOME: "$CI_PROJECT_DIR/.gradle"
+  YARN_ENABLE_GLOBAL_CACHE: "false"
+  YARN_CACHE_FOLDER: "$CI_PROJECT_DIR/.yarn/cache"
 
 .build-rules: &build_rules
   rules:
     - if: $CI_PIPELINE_SOURCE == "push"
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-
-build:
-  stage: ci
-  image: eclipse-temurin:21
-  <<: *build_rules
+.gradle-cache: &gradle-cache
   cache:
     key:
       files:
         - gradle/wrapper/gradle-wrapper.properties
     paths:
+      - .gradle/configuration-cache
       - .gradle/caches
       - .gradle/wrapper
+
+build:
+  stage: ci
+  image: eclipse-temurin:21-alpine
+  <<: *build_rules
+  <<: *gradle-cache
+  variables:
+    GRADLE_ENCRYPTION_KEY: "$GRADLE_ENCRYPTION_KEY"
   script:
-    - ./gradlew build --console=plain
+    - ./gradlew build --build-cache --console=plain
 
 license:
   stage: ci
@@ -49,6 +56,9 @@ format:
         - yarn.lock
     paths:
       - .yarn/cache
+      - .pnp.*js
+      - .yarn/install-state.gz
+
   script:
     - corepack enable
     - yarn install --immutable --inline-builds --check-resolutions
@@ -56,23 +66,25 @@ format:
 
 format-kotlin:
   stage: ci
-  image: ubuntu:latest
+  image: eclipse-temurin:21-alpine
   <<: *build_rules
+  variables:
+    KTLINT_VERSION: "1.8.0"
+  cache:
+    key: ktlint-${KTLINT_VERSION}
+    paths:
+      - scripts/.tools
   script:
-    - apt-get update
-    - apt-get install -y --no-install-recommends ca-certificates curl git unzip openjdk-21-jdk
-    - git clone https://github.com/asdf-vm/asdf.git "$HOME/.asdf" --branch v0.14.1
-    - . "$HOME/.asdf/asdf.sh"
-    - asdf plugin add ktlint
-    - asdf install ktlint
-    - export PATH="$HOME/.asdf/shims:$PATH"
-    - ktlint "*.gradle.kts" "**/*.gradle.kts"
+    - ./scripts/ktlint.sh "*.gradle.kts" "**/*.gradle.kts"
 
 full:
   stage: full
-  image: eclipse-temurin:21
+  image: eclipse-temurin:21-alpine
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  <<: *gradle-cache
+  variables:
+    GRADLE_ENCRYPTION_KEY: "$GRADLE_ENCRYPTION_KEY"
   script:
     - ./gradlew build --no-build-cache --no-configuration-cache --scan
 

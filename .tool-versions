@@ -2,3 +2,4 @@ java temurin-21.0.8+9.0.LTS
 nodejs 24.11.1
 ktlint 1.7.1
 python 3.14.0
+shfmt 3.12.0
