@@ -7,4 +7,8 @@ on: [push]
 jobs:
   build:
     uses: xenoterracide/github/.github/workflows/maven.yml@develop
+    permissions:
+      actions: write
+      contents: read
+      packages: read
     secrets: inherit
