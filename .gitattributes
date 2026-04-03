@@ -4,6 +4,7 @@
 
 * text=auto eol=lf
 *.sh text eol=lf
-*.bat text eol=crlf
+*.bat text eol=crlf linguist-vendored
+*.cmd text eol=crlf linguist-vendored
 *.jar binary
 /mvnw eol=lf linguist-vendored
