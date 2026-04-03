@@ -9,3 +9,4 @@
 *.jar binary
 /mvnw eol=lf linguist-vendored
 /LICENSES/* linguist-vendored
+*.lock linguist-vendored
