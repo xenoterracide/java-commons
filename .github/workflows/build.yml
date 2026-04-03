@@ -11,4 +11,3 @@ jobs:
       actions: write
       contents: read
       packages: read
-    secrets: inherit
