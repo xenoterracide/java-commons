@@ -8,3 +8,4 @@
 *.cmd text eol=crlf linguist-vendored
 *.jar binary
 /mvnw eol=lf linguist-vendored
+/LICENSES/* linguist-vendored
