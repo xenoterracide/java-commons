@@ -27,7 +27,7 @@ plugin-convention-coverage = { module = "com.xenoterracide.gradle.convention:cov
 plugin-convention-publish = { module = "com.xenoterracide.gradle.convention:publish", version.ref = "convention" }
 plugin-convention-spotbugs = { module = "com.xenoterracide.gradle.convention:spotbugs", version.ref = "convention" }
 plugin-dependency-analysis = { module = "com.autonomousapps:dependency-analysis-gradle-plugin", version = "3.+" }
-plugin-errorprone = "net.ltgt.gradle:gradle-errorprone-plugin:4.+"
+plugin-errorprone = "net.ltgt.gradle:gradle-errorprone-plugin:5.+"
 spotbugs = "com.github.spotbugs:spotbugs:4.+"
 spring-bom = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring" }
 vavr = "io.vavr:vavr:0.+"
