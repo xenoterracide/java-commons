@@ -5,7 +5,7 @@
 [versions]
 ep = "2.+"
 checker = "3.+"
-spring = "3.+"
+spring = "4.+"
 convention = "0.3.+"
 
 [libraries]
