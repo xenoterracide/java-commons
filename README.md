@@ -1,7 +1,8 @@
 <!--
-SPDX-FileCopyrightText: Copyright © 2024 - 2025 Caleb Cushing
+SPDX-FileCopyrightText: Copyright © 2024-2026 Caleb Cushing
 
 SPDX-License-Identifier: CC-BY-NC-4.0
+SPDX-License-Identifier: CC-BY-NC-SA-4.0
 -->
 
 # Contributing
@@ -25,8 +26,8 @@ add a way to export these to your `PATH` in your `~/.profile`
 In order to get snapshots of dependencies, you must have a GitHub token in your `~/.gradle/gradle.properties` file. This file should look like:
 
 ```properties
-ghUsername = <your username>
-ghPassword = <your token>
+ghUsername=<your username>
+ghPassword=<your token>
 ```
 
 You should generate your PAT as [Github Documents here](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry#authenticating-to-github-packages).
