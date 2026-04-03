@@ -1,9 +1,12 @@
-# SPDX-FileCopyrightText: Copyright © 2024 Caleb Cushing
+# SPDX-FileCopyrightText: Copyright © 2025, 2026 Caleb Cushing
 #
 # SPDX-License-Identifier: CC0-1.0
 
 * text=auto eol=lf
 *.sh text eol=lf
-*.bat text eol=crlf
+*.bat text eol=crlf linguist-vendored
+*.cmd text eol=crlf linguist-vendored
 *.jar binary
-/gradlew text eol=lf
+/mvnw eol=lf linguist-vendored
+/LICENSES/* linguist-vendored
+*.lock linguist-vendored

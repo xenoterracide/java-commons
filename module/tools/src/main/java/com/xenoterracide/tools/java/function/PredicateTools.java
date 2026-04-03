@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright © 2024 - 2025 Caleb Cushing
+// SPDX-FileCopyrightText: Copyright © 2024-2026 Caleb Cushing
 //
 // SPDX-License-Identifier: Apache-2.0
 
@@ -23,7 +23,7 @@ public final class PredicateTools {
    *   Stream.of(new TestRecord("Caleb"), new TestRecord("Bob"))
    *     .filter(is(TestRecord::name, Predicate.isEqual("Caleb")))
    *     .collect(Collectors.toList()); // [TestRecord[name=Caleb]]
-   *}
+   * }
    *
    * @param <T>       the type parameter
    * @param <PROP>    the type parameter
