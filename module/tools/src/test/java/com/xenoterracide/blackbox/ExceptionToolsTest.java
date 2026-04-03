@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright © 2024 Caleb Cushing
+// SPDX-FileCopyrightText: Copyright © 2024, 2026 Caleb Cushing
 //
 // SPDX-License-Identifier: Apache-2.0
 
@@ -11,14 +11,13 @@ import com.xenoterracide.tools.java.function.ExceptionTools;
 import io.vavr.control.Try;
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ExceptionToolsTest {
 
   @Test
   void convertRuntimeExceptionsAreJustRethrown() {
-    Assertions.assertThat(ExceptionTools.toRuntime(new NullPointerException()))
+    assertThat(ExceptionTools.toRuntime(new NullPointerException()))
       .isInstanceOf(NullPointerException.class)
       .hasNoCause();
   }
