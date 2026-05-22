@@ -33,6 +33,7 @@
       matchManagers: ["github-actions"],
       matchDepNames: ["xenoterracide/**"],
       extends: ["helpers:pinGitHubActionDigests"],
+      branchTopic: "{{{depNameSanitized}}}-{{{newDigestShort}}}",
       automerge: true,
     },
   ],
