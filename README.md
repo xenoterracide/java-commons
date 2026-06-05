@@ -44,6 +44,10 @@ uv run --frozen --group dev git config core.hooksPath .config/git/hooks
 
 Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## AI Agent Skills
+
+This repository uses skills from [xenoterracide/agent-skills](https://github.com/xenoterracide/agent-skills), a Kimi Code plugin providing AI coding agent capabilities for Java, Gradle, GitHub, and development workflows.
+
 # License
 
 Apache 2.0
