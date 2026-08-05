@@ -139,12 +139,16 @@ All source files are formatted with **Prettier** (including Java via `prettier-p
 ### Licensing / SPDX
 
 - **Every file** must have an SPDX header.
+
 <!-- REUSE-IgnoreStart -->
+
 - Java source files use `SPDX-License-Identifier: Apache-2.0`.
 - Configuration/XML/TOML/YAML/JSON5 files use `CC0-1.0`.
 - Shell scripts and JS/CJS files use `MIT`.
 - Markdown/ADoc use `CC-BY-NC-SA-4.0`.
+
 <!-- REUSE-IgnoreEnd -->
+
 - `lint-staged` automatically adds headers via `reuse annotate` on commit.
 
 ## Testing Instructions
