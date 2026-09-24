@@ -6,7 +6,7 @@ name: build
 on: [push]
 jobs:
   build:
-    uses: xenoterracide/github/.github/workflows/maven.yml@282548b49b3c4c69e79f75ec263bb4e2b92fcaf5 # develop
+    uses: xenoterracide/github/.github/workflows/maven.yml@cfba249d85633acfd77097f2c4dc1ae00c9fa7d3 # develop
     permissions:
       actions: write
       contents: read
