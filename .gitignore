@@ -81,9 +81,6 @@ build/Release
 node_modules/
 jspm_packages/
 
-# Agent scratch
-.superpowers/
-
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
@@ -157,3 +154,6 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+
+# Agent scratch; unignored, reuse lint counts its files as unlicensed
+.superpowers/

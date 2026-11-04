@@ -19,7 +19,9 @@ Read these files instead of trusting a copy of their contents here. Versions and
 
 | For                                            | See                                        |
 | ---------------------------------------------- | ------------------------------------------ |
-| Tool versions (Java, Node, Python)             | `.tool-versions`                           |
+| Install, update, usage, contribution           | `README.md`                                |
+| Tool versions (Java, Node, ktlint, Python)     | `.tool-versions`                           |
+| Maven version                                  | `.mvn/wrapper/maven-wrapper.properties`    |
 | pnpm version                                   | `packageManager` in `package.json`         |
 | Java release, plugins, quality-gate thresholds | `pom.xml`                                  |
 | Node dev dependencies                          | `package.json`, `pnpm-lock.yaml`           |
@@ -27,8 +29,10 @@ Read these files instead of trusting a copy of their contents here. Versions and
 | Formatting rules                               | `.editorconfig`, `.prettierrc.cjs`         |
 | Conventional commit types                      | `git-conventional-commits.yaml`            |
 | Pre-commit rules (license + format)            | `.lintstagedrc.cjs`                        |
+| License headers                                | `REUSE.toml`, `.lintstagedrc.cjs`          |
 | Git hooks                                      | `.config/git/hooks`                        |
 | Static-analysis config                         | `.config/checkstyle/`, `.config/spotbugs/` |
+| CI workflows                                   | `.github/workflows/`                       |
 | Renovate config                                | `.github/renovate.json5`                   |
 | Design decisions                               | `docs/superpowers/specs/`                  |
 
@@ -37,7 +41,7 @@ Read these files instead of trusting a copy of their contents here. Versions and
 - **Java**: Temurin via `asdf`, version in `.tool-versions`
 - **Build Tool**: Apache Maven (wrapper: `./mvnw`)
 - **Node.js**: via `asdf`, version in `.tool-versions`; pnpm via Corepack, version in `package.json`
-- **Python**: via `uv`, version in `.tool-versions`
+- **Python**: via `asdf`, version in `.tool-versions`; dependencies via `uv`
 
 ### Key Maven Plugins & Quality Gates
 
@@ -207,11 +211,12 @@ Hooks live in `.config/git/hooks`; `contribute` and `.envrc` set `core.hooksPath
    ```bash
    asdf install
    ```
-2. Enable Corepack once. No script can do this first step: they run through pnpm, and Corepack is what provides it.
+2. Install Corepack once. Node stopped shipping it at 25.0.0, and every script here runs through pnpm, which Corepack provides.
    ```bash
-   corepack enable
+   npm install --global corepack
+   corepack enable --install-directory ~/.local/bin
    ```
-3. Run the contribute script. It re-enables Corepack, installs the pinned pnpm, syncs Node/Python deps, and points `core.hooksPath` at `.config/git/hooks`:
+3. Run the contribute script. It re-runs the Corepack setup, installs the pinned pnpm, syncs Node/Python deps, and points `core.hooksPath` at `.config/git/hooks`:
    ```bash
    pnpm contribute
    ```
