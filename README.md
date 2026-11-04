@@ -35,6 +35,7 @@ If you need the individual steps, they are:
 
 ```sh
 asdf install
+corepack --version >/dev/null 2>&1 || npm install --global corepack
 corepack enable --install-directory ~/.local/bin
 pnpm install --frozen-lockfile
 uv sync --frozen --group dev
