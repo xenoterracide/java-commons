@@ -1,6 +1,6 @@
 {
   "name": "java-commons",
-  "packageManager": "yarn@4.18.1",
+  "packageManager": "pnpm@12.16.1",
   "private": true,
   "license": "Apache-2.0",
   "devDependencies": {
@@ -14,17 +14,13 @@
     "rimraf": "^6.1.2"
   },
   "scripts": {
-    "contribute": "uv sync --frozen && git config core.hooksPath .share/git/hooks",
-    "lint": "yarn lint:prettier && yarn lint:reuse",
+    "contribute": "uv sync --frozen && git config core.hooksPath .config/git/hooks",
+    "lint": "pnpm lint:prettier && pnpm lint:reuse",
     "lint:prettier": "prettier --ignore-unknown --cache --check '**'",
-    "lint:reuse": "yarn reuse lint",
-    "merge:copilot": "cd .share && yarn workspace merge run merge:copilot",
-    "merge:junie": "cd .share && yarn workspace merge run merge:junie",
-    "merge:kimi": "cd .share && yarn workspace merge run merge:kimi",
-    "precontribute": "yarn setup:corepack && yarn setup:yarn",
+    "lint:reuse": "pnpm reuse lint",
+    "precontribute": "pnpm setup:corepack && pnpm setup:pnpm",
     "reuse": "uv run --frozen --group dev reuse",
-    "setup:corepack": "npm install -g corepack && corepack enable",
-    "setup:yarn": "yarn install --immutable && cd .share && yarn install --immutable",
-    "test": "yarn workspaces foreach --all run test"
+    "setup:corepack": "npm install --global corepack && corepack enable --install-directory ~/.local/bin",
+    "setup:pnpm": "pnpm install --frozen-lockfile"
   }
 }

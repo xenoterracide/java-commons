@@ -18,15 +18,15 @@ add a way to export these to your `PATH` in your `~/.profile`
 ## Build Tools
 
 - [Apache Maven](https://maven.apache.org/)
-- [Yarn 4](https://yarnpkg.com/getting-started/install) (via Corepack)
+- [pnpm](https://pnpm.io/installation) (via Corepack)
 
 #### Fetching Dependencies
 
 ```sh
 # Enable Corepack, install Node dev tools, run postinstall, then verify Maven deps
 corepack enable
-yarn install --immutable
-yarn contribute
+pnpm install --frozen-lockfile
+pnpm contribute
 ./mvnw verify
 ```
 
