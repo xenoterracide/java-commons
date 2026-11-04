@@ -81,8 +81,7 @@ build/Release
 node_modules/
 jspm_packages/
 
-# pnpm and agent scratch
-.pnpm-store/
+# Agent scratch
 .superpowers/
 
 # Snowpack dependency directory (https://snowpack.dev/)

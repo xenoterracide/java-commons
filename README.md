@@ -10,7 +10,7 @@ SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 [asdf](https://asdf-vm.com) is suggested, you can use whatever you'd like to get
 
-- Java 21+
+- Java (version in `.tool-versions`)
 - NodeJs
 
 add a way to export these to your `PATH` in your `~/.profile`
@@ -23,14 +23,12 @@ add a way to export these to your `PATH` in your `~/.profile`
 #### Fetching Dependencies
 
 ```sh
-# Enable Corepack, install Node dev tools, set up git hooks, then verify Maven deps
+# Enable Corepack once - no script can do it first, they run through pnpm
 corepack enable
-pnpm install --frozen-lockfile
+# Install the pinned pnpm, Node/Python deps, and git hooks, then verify Maven deps
 pnpm contribute
 ./mvnw verify
 ```
-
-Upgrading a clone that still has yarn 4: run `pnpm contribute` first. It deletes the leftover `.pnp.cjs`, `.pnp.loader.mjs`, and `.yarn/`, and repoints `core.hooksPath` — older clones still point at the deleted `.share/git/hooks`, and git skips a missing hooks directory silently. pnpm preloads `.pnp.cjs`, so `pnpm exec` fails until it is gone.
 
 If you need to run the setup steps directly, you can recreate and use the Python lock file via uv:
 

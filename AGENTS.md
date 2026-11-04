@@ -12,21 +12,38 @@ SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 - **Group ID**: `com.xenoterracide`
 - **Artifact ID**: `java-commons-parent`
-- **Current Version**: `0.0.0`
-- **Java Release**: 21
+
+## Source of Truth
+
+Read these files instead of trusting a copy of their contents here. Versions and rules drift; these do not.
+
+| For                                            | See                                        |
+| ---------------------------------------------- | ------------------------------------------ |
+| Tool versions (Java, Node, Python)             | `.tool-versions`                           |
+| pnpm version                                   | `packageManager` in `package.json`         |
+| Java release, plugins, quality-gate thresholds | `pom.xml`                                  |
+| Node dev dependencies                          | `package.json`, `pnpm-lock.yaml`           |
+| Python dependencies                            | `pyproject.toml`, `uv.lock`                |
+| Formatting rules                               | `.editorconfig`, `.prettierrc.cjs`         |
+| Conventional commit types                      | `git-conventional-commits.yaml`            |
+| Pre-commit rules (license + format)            | `.lintstagedrc.cjs`                        |
+| Git hooks                                      | `.config/git/hooks`                        |
+| Static-analysis config                         | `.config/checkstyle/`, `.config/spotbugs/` |
+| Renovate config                                | `.github/renovate.json5`                   |
+| Design decisions                               | `docs/superpowers/specs/`                  |
 
 ## Technology Stack
 
-- **Java**: 21+ (Temurin recommended, managed via `asdf`)
+- **Java**: Temurin via `asdf`, version in `.tool-versions`
 - **Build Tool**: Apache Maven (wrapper: `./mvnw`)
-- **Node.js**: 26.13.0 (managed via `asdf`); pnpm 12 via Corepack
-- **Python**: 3.15.2 (managed via `uv`)
+- **Node.js**: via `asdf`, version in `.tool-versions`; pnpm via Corepack, version in `package.json`
+- **Python**: via `uv`, version in `.tool-versions`
 
 ### Key Maven Plugins & Quality Gates
 
-- **Compiler**: `maven-compiler-plugin` with `release=21`
+- **Compiler**: `maven-compiler-plugin`; release and flags in `pom.xml`
 - **Static Analysis**: Error Prone + NullAway (compile-time), SpotBugs, Checkstyle
-- **Coverage**: JaCoCo with a **minimum 90% instruction coverage** rule
+- **Coverage**: JaCoCo; thresholds in `pom.xml`
 - **Testing**: JUnit 5 (Jupiter), AssertJ, Vavr (test scope)
 - **Javadoc**: `doclint=all,-missing`
 
@@ -150,7 +167,7 @@ All source files are formatted with **Prettier** (including Java via `prettier-p
 - Tests live in `src/test/java` under the **`com.xenoterracide.blackbox`** package (black-box testing style).
 - The test module (`module-info.java`) opens its packages to `org.junit.platform.commons`.
 - Maven Surefire runs unit tests on the **module path** (`useModulePath=true`).
-- JaCoCo enforces **≥ 90% instruction coverage**.
+- JaCoCo enforces the instruction-coverage rule in `pom.xml`.
 - SpotBugs and Checkstyle run on both main and test code.
 
 ```bash
@@ -190,11 +207,11 @@ Hooks live in `.config/git/hooks`; `contribute` and `.envrc` set `core.hooksPath
    ```bash
    asdf install
    ```
-2. Enable Corepack, which provides the pnpm version pinned in `package.json`:
+2. Enable Corepack once. No script can do this first step: they run through pnpm, and Corepack is what provides it.
    ```bash
    corepack enable
    ```
-3. Run the contribute script to install Node/Python deps and configure hooks:
+3. Run the contribute script. It re-enables Corepack, installs the pinned pnpm, syncs Node/Python deps, and points `core.hooksPath` at `.config/git/hooks`:
    ```bash
    pnpm contribute
    ```
