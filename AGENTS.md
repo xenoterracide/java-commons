@@ -8,7 +8,7 @@ SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 ## Project Overview
 
-`java-commons` is a multi-module Maven parent project that provides reusable Java commons libraries. It is authored by Caleb Cushing and licensed under Apache-2.0.
+`java-commons` is a multi-module Maven parent project of reusable Java libraries by Caleb Cushing. License: Apache-2.0; per-file licenses in `REUSE.toml`.
 
 - **Group ID**: `com.xenoterracide`
 - **Artifact ID**: `java-commons-parent`
@@ -36,57 +36,25 @@ Read these files instead of trusting a copy of their contents here. Versions and
 | Renovate config                                | `.github/renovate.json5`                   |
 | Design decisions                               | `docs/superpowers/specs/`                  |
 
-## Technology Stack
-
-- **Java**: Temurin via `asdf`, version in `.tool-versions`
-- **Build Tool**: Apache Maven (wrapper: `./mvnw`)
-- **Node.js**: via `asdf`, version in `.tool-versions`; pnpm via Corepack, version in `package.json`
-- **Python**: via `asdf`, version in `.tool-versions`; dependencies via `uv`
-
-### Key Maven Plugins & Quality Gates
-
-- **Compiler**: `maven-compiler-plugin`; release and flags in `pom.xml`
-- **Static Analysis**: Error Prone + NullAway (compile-time), SpotBugs, Checkstyle
-- **Coverage**: JaCoCo; thresholds in `pom.xml`
-- **Testing**: JUnit 5 (Jupiter), AssertJ, Vavr (test scope)
-- **Javadoc**: `doclint=all,-missing`
-
 ## Project Structure
 
 ```
 .
 ├── pom.xml                         # Parent POM
-├── module/
-│   └── tools/                      # Current library module
-│       ├── pom.xml
-│       └── src/
-│           ├── main/java/
-│           │   ├── module-info.java
-│           │   └── com/xenoterracide/tools/java/
-│           │       ├── annotation/   # e.g. @Initializer, @ExcludeFromGeneratedCoverageReport
-│           │       ├── collection/   # ArrayTools, CollectionTools
-│           │       ├── function/     # ExceptionTools, PredicateTools
-│           │       └── util/         # ObjectTools
-│           └── test/java/
-│               ├── module-info.java
-│               └── com/xenoterracide/blackbox/  # Black-box tests
-├── .config/
-│   ├── checkstyle/
-│   │   ├── main.xml                # Checkstyle rules for production code
-│   │   └── test.xml                # Checkstyle rules for test code
-│   ├── spotbugs/
-│   │   └── exclude.xml             # SpotBugs suppression filter
-│   └── git/hooks/                  # Git hooks (pre-commit, commit-msg, post-*)
-├── .github/
-│   ├── renovate.json5              # Renovate Bot configuration
-│   └── workflows/
-│       ├── build.yml               # Reusable Maven build workflow
-│       └── pre-commit.yml          # License + Prettier checks
-├── .mvn/
-│   └── jvm.config                  # JDK compiler exports for Error Prone
-├── package.json                    # Node dev-tool manifest (prettier, lint-staged, etc.)
-├── pyproject.toml                  # Python project metadata (uv)
-└── REUSE.toml                      # REUSE license compliance overrides
+└── module/
+    └── tools/                      # The library module
+        ├── pom.xml
+        └── src/
+            ├── main/java/
+            │   ├── module-info.java
+            │   └── com/xenoterracide/tools/java/
+            │       ├── annotation/
+            │       ├── collection/
+            │       ├── function/
+            │       └── util/
+            └── test/java/
+                ├── module-info.java
+                └── com/xenoterracide/blackbox/
 ```
 
 ## Build and Test Commands
@@ -94,16 +62,16 @@ Read these files instead of trusting a copy of their contents here. Versions and
 ### Maven
 
 ```bash
-# Compile, test, and run all quality checks (checkstyle, spotbugs, jacoco)
+# Compile, test, and run all quality checks
 ./mvnw verify
 
 # Run only unit tests
 ./mvnw test
 
-# Run a specific module
+# Run one module
 ./mvnw -pl module/tools verify
 
-# Skip checks during development (use sparingly)
+# Skip checks while iterating
 ./mvnw test -Dcheckstyle.skip=true -Dspotbugs.skip=true -Djacoco.skip=true
 ```
 
@@ -113,7 +81,7 @@ Read these files instead of trusting a copy of their contents here. Versions and
 # Install Node dependencies and set up git hooks
 pnpm contribute
 
-# Run linting (prettier + REUSE license compliance)
+# Lint (prettier + REUSE license compliance)
 pnpm lint
 pnpm lint:prettier
 pnpm lint:reuse
@@ -122,22 +90,29 @@ pnpm lint:reuse
 ### Python / uv
 
 ```bash
-# Sync Python environment (includes `reuse` tool for license compliance)
+# Sync the Python environment; brings `reuse`
 uv sync --frozen --group dev
 ```
+
+## Quality Gates
+
+- Error Prone + NullAway at compile time; `.mvn/jvm.config` exports the JDK internals they need
+- Checkstyle on main and test code; SpotBugs on main
+- JaCoCo instruction coverage
+- Javadoc doclint `all,-missing`
+- Surefire runs tests on the module path
+
+## Testing Instructions
+
+- Tests live in `src/test/java` under **`com.xenoterracide.blackbox`** (black-box style).
+- The test `module-info.java` opens its packages to `org.junit.platform.commons`.
+- Test stack: JUnit Jupiter, AssertJ, Vavr (test scope).
 
 ## Code Style Guidelines
 
 ### Formatting
 
-- **Indent**: 2 spaces
-- **Line endings**: LF
-- **Charset**: UTF-8
-- **Print width**: 120 characters (Prettier)
-- **Trailing whitespace**: trimmed
-- **Final newline**: required
-
-All source files are formatted with **Prettier** (including Java via `prettier-plugin-java`).
+Rules live in `.editorconfig` and `.prettierrc.cjs`. Prettier formats every file, Java included (`prettier-plugin-java`).
 
 ### Java Conventions
 
@@ -166,22 +141,6 @@ All source files are formatted with **Prettier** (including Java via `prettier-p
 
 - `lint-staged` automatically adds headers via `reuse annotate` on commit.
 
-## Testing Instructions
-
-- Tests live in `src/test/java` under the **`com.xenoterracide.blackbox`** package (black-box testing style).
-- The test module (`module-info.java`) opens its packages to `org.junit.platform.commons`.
-- Maven Surefire runs unit tests on the **module path** (`useModulePath=true`).
-- JaCoCo enforces the instruction-coverage rule in `pom.xml`.
-- SpotBugs and Checkstyle run on both main and test code.
-
-```bash
-# Fast feedback loop
-./mvnw -pl module/tools test
-
-# Full verification (use before pushing)
-./mvnw verify
-```
-
 ## Git Workflow
 
 ### Conventional Commits
@@ -192,35 +151,14 @@ Commit messages are validated by a git hook. Allowed types (from `git-convention
 
 ### Hooks
 
-Hooks live in `.config/git/hooks`; `contribute` and `.envrc` set `core.hooksPath` to it:
+Hooks live in `.config/git/hooks`; `contribute` and `.envrc` point `core.hooksPath` at them.
 
 - **pre-commit**: runs `lint-staged` (format + license headers)
 - **commit-msg**: validates conventional commit format
 - **post-checkout / post-merge**: reinstall dependencies when a lockfile changed
 
-## Security Considerations
+Hooks exit immediately in CI (`[ -n "$CI" ]`).
 
-1. **CI Detection**: All git hooks exit immediately when `[ -n "$CI" ]` is true.
-2. **Lockfile Integrity**: pnpm installs use `--frozen-lockfile` to prevent unexpected lockfile mutations.
-3. **JVM Config**: `.mvn/jvm.config` exports required JDK compiler internals safely for Error Prone/NullAway.
-4. **Dependency Updates**: Renovate is configured with automerge for minor/patch Maven updates and scheduled grouping for npm/asdf dev dependencies.
+### Renovate
 
-## Development Setup
-
-1. Install prerequisites via `asdf` (reads `.tool-versions`):
-   ```bash
-   asdf install
-   ```
-2. Install Corepack once. Node stopped shipping it at 25.0.0, and every script here runs through pnpm, which Corepack provides.
-   ```bash
-   npm install --global corepack
-   corepack enable --install-directory ~/.local/bin
-   ```
-3. Run the contribute script. It re-runs the Corepack setup, installs the pinned pnpm, syncs Node/Python deps, and points `core.hooksPath` at `.config/git/hooks`:
-   ```bash
-   pnpm contribute
-   ```
-4. Verify the build:
-   ```bash
-   ./mvnw verify
-   ```
+Renovate opens dependency PRs, automerges minor/patch Maven updates, and groups npm/asdf updates on a schedule. Expect develop to move under you.
