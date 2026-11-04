@@ -30,7 +30,7 @@ pnpm contribute
 ./mvnw verify
 ```
 
-Upgrading a clone that still has yarn 4: delete `.pnp.cjs`, `.pnp.loader.mjs`, and `.yarn/` first. pnpm preloads `.pnp.cjs`, so `pnpm exec` fails until it is gone. Then run `pnpm contribute`: older clones still point `core.hooksPath` at the deleted `.share/git/hooks`, and git skips a missing hooks directory silently.
+Upgrading a clone that still has yarn 4: run `pnpm contribute` first. It deletes the leftover `.pnp.cjs`, `.pnp.loader.mjs`, and `.yarn/`, and repoints `core.hooksPath` — older clones still point at the deleted `.share/git/hooks`, and git skips a missing hooks directory silently. pnpm preloads `.pnp.cjs`, so `pnpm exec` fails until it is gone.
 
 If you need to run the setup steps directly, you can recreate and use the Python lock file via uv:
 

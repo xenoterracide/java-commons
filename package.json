@@ -14,7 +14,8 @@
     "rimraf": "^6.1.2"
   },
   "scripts": {
-    "contribute": "uv sync --frozen && git config core.hooksPath .config/git/hooks",
+    "clean:yarn": "rm -rf .pnp.cjs .pnp.loader.mjs .yarn",
+    "contribute": "pnpm clean:yarn && uv sync --frozen && git config core.hooksPath .config/git/hooks",
     "lint": "pnpm lint:prettier && pnpm lint:reuse",
     "lint:prettier": "prettier --ignore-unknown --cache --check '**'",
     "lint:reuse": "pnpm reuse lint",

@@ -85,10 +85,6 @@ jspm_packages/
 .pnpm-store/
 .superpowers/
 
-# yarn-era leftovers; never commit them, pnpm preloads .pnp.cjs at startup
-.pnp.*
-.yarn/
-
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
