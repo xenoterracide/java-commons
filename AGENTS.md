@@ -19,7 +19,7 @@ SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 - **Java**: 21+ (Temurin recommended, managed via `asdf`)
 - **Build Tool**: Apache Maven (wrapper: `./mvnw`)
-- **Node.js**: 24.22.2 (managed via `asdf`); pnpm 12 via Corepack
+- **Node.js**: 26.13.0 (managed via `asdf`); pnpm 12 via Corepack
 - **Python**: 3.15.2 (managed via `uv`)
 
 ### Key Maven Plugins & Quality Gates
