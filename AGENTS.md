@@ -36,27 +36,6 @@ Read these files instead of trusting a copy of their contents here. Versions and
 | Renovate config                                | `.github/renovate.json5`                   |
 | Design decisions                               | `docs/superpowers/specs/`                  |
 
-## Project Structure
-
-```
-.
-├── pom.xml                         # Parent POM
-└── module/
-    └── tools/                      # The library module
-        ├── pom.xml
-        └── src/
-            ├── main/java/
-            │   ├── module-info.java
-            │   └── com/xenoterracide/tools/java/
-            │       ├── annotation/
-            │       ├── collection/
-            │       ├── function/
-            │       └── util/
-            └── test/java/
-                ├── module-info.java
-                └── com/xenoterracide/blackbox/
-```
-
 ## Build and Test Commands
 
 ### Maven
