@@ -30,6 +30,8 @@ pnpm contribute
 ./mvnw verify
 ```
 
+Upgrading a clone that still has yarn 4: delete `.pnp.cjs`, `.pnp.loader.mjs`, and `.yarn/` first. pnpm preloads `.pnp.cjs`, so `pnpm exec` fails until it is gone.
+
 If you need to run the postinstall step directly, you can recreate and use the Python lock file via uv:
 
 ```sh
