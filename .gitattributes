@@ -10,3 +10,4 @@
 /mvnw eol=lf linguist-vendored
 /LICENSES/* linguist-vendored
 *.lock linguist-vendored
+pnpm-lock.yaml text linguist-generated

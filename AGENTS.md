@@ -15,14 +15,12 @@ SPDX-License-Identifier: CC-BY-NC-SA-4.0
 - **Current Version**: `0.0.0`
 - **Java Release**: 21
 
-The repository also embeds a **shared tooling subtree** under `.share/` that supplies git hooks, AI-assisted merge workflows, and cross-project linting configuration.
-
 ## Technology Stack
 
 - **Java**: 21+ (Temurin recommended, managed via `asdf`)
 - **Build Tool**: Apache Maven (wrapper: `./mvnw`)
-- **Node.js**: 24.14.1 (managed via `yarn` 4 with Plug'n'Play)
-- **Python**: 3.14.3 (managed via `uv`)
+- **Node.js**: 24.22.2 (managed via `pnpm` 12)
+- **Python**: 3.15.2 (managed via `uv`)
 
 ### Key Maven Plugins & Quality Gates
 
@@ -57,13 +55,12 @@ The repository also embeds a **shared tooling subtree** under `.share/` that sup
 │   │   └── test.xml                # Checkstyle rules for test code
 │   ├── spotbugs/
 │   │   └── exclude.xml             # SpotBugs suppression filter
-│   └── git/hooks/                  # commit-msg and pre-commit hooks
+│   └── git/hooks/                  # Git hooks (pre-commit, commit-msg, post-*)
 ├── .github/
 │   ├── renovate.json5              # Renovate Bot configuration
 │   └── workflows/
 │       ├── build.yml               # Reusable Maven build workflow
 │       └── pre-commit.yml          # License + Prettier checks
-├── .share/                         # Shared tooling subtree (git hooks, merge scripts)
 ├── .mvn/
 │   └── jvm.config                  # JDK compiler exports for Error Prone
 ├── package.json                    # Node dev-tool manifest (prettier, lint-staged, etc.)
@@ -89,19 +86,16 @@ The repository also embeds a **shared tooling subtree** under `.share/` that sup
 ./mvnw test -Dcheckstyle.skip=true -Dspotbugs.skip=true -Djacoco.skip=true
 ```
 
-### Node / Yarn
+### Node / pnpm
 
 ```bash
 # Install Node dependencies and set up git hooks
-yarn contribute
-
-# Run all workspace tests (includes shared tooling type-checks)
-yarn test
+pnpm contribute
 
 # Run linting (prettier + REUSE license compliance)
-yarn lint
-yarn lint:prettier
-yarn lint:reuse
+pnpm lint
+pnpm lint:prettier
+pnpm lint:reuse
 ```
 
 ### Python / uv
@@ -177,25 +171,16 @@ Commit messages are validated by a git hook. Allowed types (from `git-convention
 
 ### Hooks
 
-Hooks are located in `.config/git/hooks` and referenced via `core.hooksPath .share/git/hooks`:
+Hooks live in `.config/git/hooks`; `contribute` and `.envrc` set `core.hooksPath` to it:
 
 - **pre-commit**: runs `lint-staged` (format + license headers)
 - **commit-msg**: validates conventional commit format
-
-### AI-Assisted Merge
-
-The `.share/` subtree provides merge scripts for different AI agents:
-
-```bash
-yarn merge:kimi      # Kimi CLI merge workflow
-yarn merge:junie     # Junie CLI merge workflow
-yarn merge:copilot   # GitHub Copilot merge workflow
-```
+- **post-checkout / post-merge**: reinstall dependencies when a lockfile changed
 
 ## Security Considerations
 
 1. **CI Detection**: All git hooks exit immediately when `[ -n "$CI" ]` is true.
-2. **Lockfile Integrity**: Yarn installs use `--immutable` to prevent unexpected lockfile mutations.
+2. **Lockfile Integrity**: pnpm installs use `--frozen-lockfile` to prevent unexpected lockfile mutations.
 3. **JVM Config**: `.mvn/jvm.config` exports required JDK compiler internals safely for Error Prone/NullAway.
 4. **Dependency Updates**: Renovate is configured with automerge for minor/patch Maven updates and scheduled grouping for npm/asdf dev dependencies.
 
@@ -207,7 +192,7 @@ yarn merge:copilot   # GitHub Copilot merge workflow
    ```
 2. Run the contribute script to install Node/Python deps and configure hooks:
    ```bash
-   yarn contribute
+   pnpm contribute
    ```
 3. Verify the build:
    ```bash

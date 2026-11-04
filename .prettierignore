@@ -3,11 +3,10 @@
 # SPDX-License-Identifier: CC0-1.0
 
 .agents/
-.share/
-.pnp.cjs
+.superpowers/
+pnpm-lock.yaml
 uv.lock
 .venv/
-.yarn/
 node_modules/
 build/
 .idea/
