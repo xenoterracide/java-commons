@@ -23,16 +23,16 @@ add a way to export these to your `PATH` in your `~/.profile`
 #### Fetching Dependencies
 
 ```sh
-# Enable Corepack, install Node dev tools, run postinstall, then verify Maven deps
+# Enable Corepack, install Node dev tools, set up git hooks, then verify Maven deps
 corepack enable
 pnpm install --frozen-lockfile
 pnpm contribute
 ./mvnw verify
 ```
 
-Upgrading a clone that still has yarn 4: delete `.pnp.cjs`, `.pnp.loader.mjs`, and `.yarn/` first. pnpm preloads `.pnp.cjs`, so `pnpm exec` fails until it is gone.
+Upgrading a clone that still has yarn 4: delete `.pnp.cjs`, `.pnp.loader.mjs`, and `.yarn/` first. pnpm preloads `.pnp.cjs`, so `pnpm exec` fails until it is gone. Then run `pnpm contribute`: older clones still point `core.hooksPath` at the deleted `.share/git/hooks`, and git skips a missing hooks directory silently.
 
-If you need to run the postinstall step directly, you can recreate and use the Python lock file via uv:
+If you need to run the setup steps directly, you can recreate and use the Python lock file via uv:
 
 ```sh
 # Sync Python environment from pyproject.toml

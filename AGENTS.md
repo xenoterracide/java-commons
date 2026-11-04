@@ -19,7 +19,7 @@ SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 - **Java**: 21+ (Temurin recommended, managed via `asdf`)
 - **Build Tool**: Apache Maven (wrapper: `./mvnw`)
-- **Node.js**: 24.22.2 (managed via `pnpm` 12)
+- **Node.js**: 24.22.2 (managed via `asdf`); pnpm 12 via Corepack
 - **Python**: 3.15.2 (managed via `uv`)
 
 ### Key Maven Plugins & Quality Gates
@@ -190,11 +190,15 @@ Hooks live in `.config/git/hooks`; `contribute` and `.envrc` set `core.hooksPath
    ```bash
    asdf install
    ```
-2. Run the contribute script to install Node/Python deps and configure hooks:
+2. Enable Corepack, which provides the pnpm version pinned in `package.json`:
+   ```bash
+   corepack enable
+   ```
+3. Run the contribute script to install Node/Python deps and configure hooks:
    ```bash
    pnpm contribute
    ```
-3. Verify the build:
+4. Verify the build:
    ```bash
    ./mvnw verify
    ```
