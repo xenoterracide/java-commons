@@ -23,18 +23,19 @@ add a way to export these to your `PATH` in your `~/.profile`
 #### Fetching Dependencies
 
 ```sh
-# Node stopped shipping Corepack at 25.0.0, and every script here runs through
-# pnpm, which Corepack provides, so this is the one manual step
-npm install --global corepack
-corepack enable --install-directory ~/.local/bin
-# Install the pinned pnpm, Node/Python deps, and git hooks
-pnpm contribute
+# Heals the toolchain: asdf versions, corepack, pnpm, Node/Python deps, git hooks
+sh .config/git/hooks/heal.sh
 ./mvnw verify
 ```
+
+With direnv, entering the repository runs `.envrc`, which calls the same
+healer. If `pnpm` already works, `pnpm contribute` does the same.
 
 If you need the individual steps, they are:
 
 ```sh
+asdf install
+corepack enable --install-directory ~/.local/bin
 pnpm install --frozen-lockfile
 uv sync --frozen --group dev
 git config core.hooksPath .config/git/hooks
