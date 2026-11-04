@@ -154,3 +154,6 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+
+# Agent scratch; unignored, reuse lint counts its files as unlicensed
+.superpowers/

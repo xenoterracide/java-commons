@@ -10,8 +10,8 @@ SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 [asdf](https://asdf-vm.com) is suggested, you can use whatever you'd like to get
 
-- Java 21+
-- NodeJs
+- Java (version in `.tool-versions`)
+- Node.js (version in `.tool-versions`)
 
 add a way to export these to your `PATH` in your `~/.profile`
 
@@ -23,23 +23,21 @@ add a way to export these to your `PATH` in your `~/.profile`
 #### Fetching Dependencies
 
 ```sh
-# Enable Corepack, install Node dev tools, run postinstall, then verify Maven deps
-corepack enable
-pnpm install --frozen-lockfile
+# Node stopped shipping Corepack at 25.0.0, and every script here runs through
+# pnpm, which Corepack provides, so this is the one manual step
+npm install --global corepack
+corepack enable --install-directory ~/.local/bin
+# Install the pinned pnpm, Node/Python deps, and git hooks
 pnpm contribute
 ./mvnw verify
 ```
 
-Upgrading a clone that still has yarn 4: delete `.pnp.cjs`, `.pnp.loader.mjs`, and `.yarn/` first. pnpm preloads `.pnp.cjs`, so `pnpm exec` fails until it is gone.
-
-If you need to run the postinstall step directly, you can recreate and use the Python lock file via uv:
+If you need the individual steps, they are:
 
 ```sh
-# Sync Python environment from pyproject.toml
+pnpm install --frozen-lockfile
 uv sync --frozen --group dev
-
-# Then install and set up commit hooks
-uv run --frozen --group dev git config core.hooksPath .config/git/hooks
+git config core.hooksPath .config/git/hooks
 ```
 
 ## Committing
