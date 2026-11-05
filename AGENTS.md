@@ -130,11 +130,10 @@ Commit messages are validated by a git hook. Allowed types (from `git-convention
 
 ### Hooks
 
-Hooks live in `.config/git/hooks`, beside `heal.sh`, which owns toolchain
-healing: asdf install, corepack bootstrap, `pnpm install --frozen-lockfile`,
-`uv sync --frozen`, and the `core.hooksPath` config. It always exits 0 and
-serializes concurrent heals on a `flock` (`HEAL_LOCK_WAIT` seconds,
-default 300).
+Hooks live in `.config/git/hooks`, beside `heal.sh`, the single toolchain
+healer — every entry point calls it, so never sync dependencies or tool
+versions by hand. Read `heal.sh` for its steps, exit semantics, and the
+`HEAL_LOCK_WAIT` lock knob.
 
 - **pre-commit**: runs `lint-staged` (format + license headers)
 - **commit-msg**: validates conventional commit format
