@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: Copyright © 2026 Caleb Cushing
+#
+# SPDX-License-Identifier: MIT
+
+# Managed by copier; do not edit. Run `copier update` to refresh.
+_commit: "7613969"
+_src_path: .
+copyright_holder: Caleb Cushing
+include_skeleton: false
+java_group_id: com.xenoterracide
+java_module: tools
+java_package: com.xenoterracide.tools
+java_package_path: com/xenoterracide/tools
+java_version: 0.0.0
+license: Apache-2.0
+npm_scope: ""
+project_name: java-commons
+project_title: java-commons
+template_type: java
+use_opencode: false
