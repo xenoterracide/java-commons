@@ -57,7 +57,7 @@ Read these files instead of trusting a copy of their contents here. Versions and
 ### Node / pnpm
 
 ```bash
-# Install Node dependencies and set up git hooks
+# Heal the toolchain (asdf, corepack, Node/Python deps, git hooks)
 pnpm contribute
 
 # Lint (prettier + REUSE license compliance)
@@ -130,11 +130,12 @@ Commit messages are validated by a git hook. Allowed types (from `git-convention
 
 ### Hooks
 
-Hooks live in `.config/git/hooks`; `contribute` and `.envrc` point `core.hooksPath` at them.
+Hooks live in `.config/git/hooks`.
 
 - **pre-commit**: runs `lint-staged` (format + license headers)
 - **commit-msg**: validates conventional commit format
-- **post-checkout / post-merge**: reinstall dependencies when a lockfile changed
+- **post-checkout / post-merge**: run `heal.sh` when `.tool-versions` or a
+  lockfile changed
 
 Hooks exit immediately in CI (`[ -n "$CI" ]`).
 
