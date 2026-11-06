@@ -10,14 +10,16 @@
     "prettier": "^3.6.2",
     "prettier-plugin-java": "^2.7.5",
     "prettier-plugin-properties": "^0.3.0",
-    "prettier-plugin-toml": "^2.0.6",
-    "rimraf": "^6.1.2"
+    "prettier-plugin-toml": "^4.0.0"
   },
   "scripts": {
+    "check": "pnpm lint:prettier",
     "contribute": "sh .config/git/hooks/heal.sh",
-    "lint": "pnpm lint:prettier && pnpm lint:reuse",
     "lint:prettier": "prettier --ignore-unknown --cache --check '**'",
-    "lint:reuse": "pnpm reuse lint",
-    "reuse": "uv run --frozen --group dev reuse"
+    "lint:reuse": "pnpm reuse download --all && pnpm reuse lint",
+    "precontribute": "pnpm setup:corepack",
+    "reuse": "uv run --frozen --group dev reuse",
+    "setup:corepack": "npm install --global corepack && corepack enable --install-directory ~/.local/bin",
+    "lint": "pnpm lint:prettier && pnpm lint:reuse"
   }
 }
