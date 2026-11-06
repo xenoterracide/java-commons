@@ -1,6 +1,6 @@
 {
   "name": "java-commons",
-  "packageManager": "pnpm@12.16.1",
+  "packageManager": "pnpm@12.18.0",
   "private": true,
   "license": "Apache-2.0",
   "devDependencies": {
