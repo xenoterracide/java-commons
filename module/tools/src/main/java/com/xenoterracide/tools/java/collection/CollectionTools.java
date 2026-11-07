@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright © 2024 - 2025 Caleb Cushing
+// SPDX-FileCopyrightText: Copyright © 2024-2026 Caleb Cushing
 //
 // SPDX-License-Identifier: Apache-2.0
 
@@ -18,10 +18,10 @@ public final class CollectionTools {
   /**
    * Adds an element to a collection if a condition is met.
    *
+   * @param <T> the type of the element
    * @param collection the collection to add to
    * @param element the element to add
    * @param condition the condition to test
-   * @param <T> the type of the element
    */
   public static <T> void addIf(
     @Nullable Collection<? super T> collection,
