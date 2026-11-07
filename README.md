@@ -1,5 +1,14 @@
 <!--
+<<<<<<< before updating
 SPDX-FileCopyrightText: Copyright © 2024-2026 Caleb Cushing
+=======
+SPDX-FileCopyrightText: Copyright © 2015-2026 Caleb Cushing
+
+SPDX-License-Identifier: CC-BY-NC-SA-4.0
+-->
+
+# java-commons
+>>>>>>> after updating
 
 SPDX-License-Identifier: CC-BY-NC-SA-4.0
 -->
@@ -17,6 +26,7 @@ add a way to export these to your `PATH` in your `~/.profile`
 
 ## Build Tools
 
+<<<<<<< before updating
 - [Apache Maven](https://maven.apache.org/)
 - [pnpm](https://pnpm.io/installation) (via Corepack)
 
@@ -53,3 +63,10 @@ This repository uses skills from [xenoterracide/agent-skills](https://github.com
 # License
 
 Apache 2.0
+=======
+    copier update --trust
+
+Renovate opens an update PR whenever
+[base-template](https://github.com/xenoterracide/base-template) tags a
+release. Merge it like any other dependency update.
+>>>>>>> after updating

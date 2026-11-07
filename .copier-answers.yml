@@ -3,9 +3,8 @@
 # SPDX-License-Identifier: MIT
 
 # Managed by copier; do not edit. Run `copier update` to refresh.
-_commit: v26.11.1
+_commit: v26.11.2
 _src_path: https://github.com/xenoterracide/base-template
-copyright_holder: Caleb Cushing
 include_skeleton: false
 java_group_id: com.xenoterracide
 java_module: tools
@@ -17,5 +16,4 @@ npm_scope: ''
 project_name: java-commons
 project_title: java-commons
 template_type: java
-use_opencode: false
 
