@@ -20,7 +20,7 @@ add a way to export these to your `PATH` in your `~/.profile`
 - [Apache Maven](https://maven.apache.org/)
 - [pnpm](https://pnpm.io/installation) (via Corepack)
 
-#### Fetching Dependencies
+### Fetching Dependencies
 
 ```sh
 # Heals the toolchain: asdf versions, corepack, pnpm, Node/Python deps, git hooks
@@ -50,6 +50,8 @@ Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
 This repository uses skills from [xenoterracide/agent-skills](https://github.com/xenoterracide/agent-skills), an agentic skills plugin providing AI coding agent capabilities for Java, Gradle, GitHub, and development workflows.
 
-# License
+## License
 
-Apache 2.0
+- **Code**: [Apache-2.0](LICENSES/Apache-2.0.txt)
+- **Documentation**: [CC-BY-NC-SA-4.0](LICENSES/CC-BY-NC-SA-4.0.txt)
+- **Configuration files**: [CC0-1.0](LICENSES/CC0-1.0.txt)
