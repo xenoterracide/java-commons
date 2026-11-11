@@ -29,7 +29,8 @@ sh .config/git/hooks/heal.sh
 ```
 
 With direnv, entering the repository runs `.envrc`, which calls the same
-healer. `npm run contribute` does the same.
+healer. `npm run contribute` does the same. Node 25+ drops corepack, so
+the bootstrap starts from npm.
 
 If you need the individual steps, they are:
 
