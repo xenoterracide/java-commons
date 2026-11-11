@@ -8,7 +8,6 @@ SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 ## Project Overview
 
-<<<<<<< before updating
 `java-commons` is a multi-module Maven parent project of reusable Java libraries by Caleb Cushing. License: Apache-2.0; per-file licenses in `REUSE.toml`.
 
 - **Group ID**: `com.xenoterracide`
@@ -27,7 +26,7 @@ Read these files instead of trusting a copy of their contents here. Versions and
 | Java release, plugins, quality-gate thresholds | `pom.xml`                                  |
 | Node dev dependencies                          | `package.json`, `pnpm-lock.yaml`           |
 | Python dependencies                            | `pyproject.toml`, `uv.lock`                |
-| Formatting rules                               | `.editorconfig`, `.prettierrc.cjs`         |
+| Formatting rules                               | `.editorconfig`, `.prettierrc.yml`         |
 | Conventional commit types                      | `git-conventional-commits.yaml`            |
 | Pre-commit rules (license + format)            | `.lintstagedrc.cjs`                        |
 | License headers                                | `REUSE.toml`, `.lintstagedrc.cjs`          |
@@ -59,7 +58,7 @@ Read these files instead of trusting a copy of their contents here. Versions and
 
 ```bash
 # Heal the toolchain (asdf, corepack, Node/Python deps, git hooks)
-pnpm contribute
+npm run contribute
 
 # Lint (prettier + REUSE license compliance)
 pnpm lint
@@ -92,7 +91,7 @@ uv sync --frozen --group dev
 
 ### Formatting
 
-Rules live in `.editorconfig` and `.prettierrc.cjs`. Prettier formats every file, Java included (`prettier-plugin-java`).
+Rules live in `.editorconfig` and `.prettierrc.yml`. Prettier formats every file, Java included (`prettier-plugin-java`).
 
 ### Java Conventions
 
@@ -139,21 +138,6 @@ Hooks live in `.config/git/hooks`.
   lockfile changed
 
 Hooks exit immediately in CI (`[ -n "$CI" ]`).
-=======
-- `npm run contribute` — bootstrap tooling (run once after clone)
-- `pnpm check` — run all checks
-- `pnpm lint:prettier` — prettier check
-- `pnpm lint:reuse` — REUSE compliance check
-- `./mvnw -q verify` — Maven build + checkstyle + spotbugs + jacoco + tests
-
-## Source of Truth
-
-- Template: `copier.yml` in [xenoterracide/base-template](https://github.com/xenoterracide/base-template)
-- Answers: `.copier-answers.yml` in this repo
-- Updates: `uv run --group dev copier update --trust` refreshes from template
-- Hooks heal the toolchain: `.envrc`, `contribute`, and the post hooks call
-  `.config/git/hooks/heal.sh`. A failed heal never breaks a checkout.
->>>>>>> after updating
 
 ### Renovate
 
