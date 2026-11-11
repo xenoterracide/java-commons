@@ -8,7 +8,14 @@ SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 ## Languages
 
+<<<<<<< before updating
 [asdf](https://asdf-vm.com) is suggested, you can use whatever you'd like to get
+=======
+- `npm run contribute` installs tools and dependencies, and heals the
+  toolchain through `.config/git/hooks/heal.sh`. Node 25+ drops corepack,
+  so the bootstrap starts from npm.
+- `direnv allow` (if you use direnv) loads the environment.
+>>>>>>> after updating
 
 - Java (version in `.tool-versions`)
 - Node.js (version in `.tool-versions`)
@@ -22,11 +29,15 @@ add a way to export these to your `PATH` in your `~/.profile`
 
 ### Fetching Dependencies
 
+<<<<<<< before updating
 ```sh
 # Heals the toolchain: asdf versions, corepack, pnpm, Node/Python deps, git hooks
 sh .config/git/hooks/heal.sh
 ./mvnw verify
 ```
+=======
+    uv run --group dev copier update --trust
+>>>>>>> after updating
 
 With direnv, entering the repository runs `.envrc`, which calls the same
 healer. If `pnpm` already works, `pnpm contribute` does the same.
