@@ -8,10 +8,20 @@ SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 ## Project Overview
 
+<<<<<<< before updating
 `java-commons` is a multi-module Maven parent project of reusable Java libraries by Caleb Cushing. License: Apache-2.0; per-file licenses in `REUSE.toml`.
 
 - **Group ID**: `com.xenoterracide`
 - **Artifact ID**: `java-commons-parent`
+=======
+- `npm run contribute` — bootstrap tooling (run once after clone)
+- `pnpm lint` — the pre-push set: prettier, shellcheck, reuse, plus
+  eslint (TypeScript) or checkstyle + spotbugs via Maven (java)
+- `pnpm check` — lint
+- `pnpm lint:reuse` — REUSE check alone; the first commit's pre-commit
+  hook seeds `LICENSES`
+- `./mvnw -q verify` — Maven build + checkstyle + spotbugs + jacoco + tests
+>>>>>>> after updating
 
 ## Source of Truth
 
