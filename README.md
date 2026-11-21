@@ -22,11 +22,15 @@ add a way to export these to your `PATH` in your `~/.profile`
 
 ### Fetching Dependencies
 
+<<<<<<< before updating
 ```sh
 # Heals the toolchain: asdf versions, corepack, pnpm, Node/Python deps, git hooks
 sh .config/git/hooks/heal.sh
 ./mvnw verify
 ```
+=======
+    uvx copier update --trust
+>>>>>>> after updating
 
 With direnv, entering the repository runs `.envrc`, which calls the same
 healer. `npm run contribute` does the same. Node 25+ drops corepack, so
