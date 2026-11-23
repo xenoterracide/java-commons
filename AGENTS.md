@@ -15,6 +15,7 @@ SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 ## Source of Truth
 
+<<<<<<< before updating
 Read these files instead of trusting a copy of their contents here. Versions and rules drift; these do not.
 
 | For                                            | See                                        |
@@ -138,6 +139,14 @@ Hooks live in `.config/git/hooks`.
   lockfile changed
 
 Hooks exit immediately in CI (`[ -n "$CI" ]`).
+=======
+- Template: `copier.yml` in [xenoterracide/base-template](https://github.com/xenoterracide/base-template)
+- Answers: `.copier-answers.yml` in this repo
+- Agent project config: `.config/agent/project.yaml` — tracker facts for agent workflows.
+- Updates: `uvx copier update --trust` refreshes from template
+- Hooks heal the toolchain: `.envrc`, `contribute`, and the post hooks call
+  `.config/git/hooks/heal.sh`. A failed heal never breaks a checkout.
+>>>>>>> after updating
 
 ### Renovate
 
