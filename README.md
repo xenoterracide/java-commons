@@ -6,7 +6,6 @@ SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 # java-commons
 
-<<<<<<< before updating
 ## Languages
 
 [asdf](https://asdf-vm.com) is suggested, you can use whatever you'd like to get
@@ -59,44 +58,3 @@ This repository uses skills from [xenoterracide/agent-skills](https://github.com
 - **Documentation**: [CC-BY-NC-SA-4.0](LICENSES/CC-BY-NC-SA-4.0.txt)
 - **Configuration files**: [CC0-1.0](LICENSES/CC0-1.0.txt)
 - **Scripts and manifests** (`*.sh`, `*.js`, `*.yml`, `package.json`): [MIT](LICENSES/MIT.txt)
-=======
-java-commons is a Java project.
-
-## Use
-
-Add the library to your build, then call its public API.
-
-## Install
-
-Add the library to your build.
-
-Maven:
-
-```xml
-<dependency>
-  <groupId>com.xenoterracide</groupId>
-  <artifactId>tools</artifactId>
-  <version>0.0.0</version>
-</dependency>
-```
-
-Gradle (Kotlin or Groovy DSL):
-
-```kotlin
-dependencies {
-    implementation("com.xenoterracide:tools:0.0.0")
-}
-```
-
-## Development
-
-- [CONTRIBUTING.md](CONTRIBUTING.md) — human contributor guide
-- [AGENTS.md](AGENTS.md) — guide for AI agents
-
-## License
-
-Project code: [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0.txt).
-Documentation: [CC-BY-NC-SA-4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
-Copyright © 2015-2026 Caleb Cushing. Full texts live in [LICENSES](LICENSES).
-Each file carries its own SPDX header. A file may use a different license.
->>>>>>> after updating
