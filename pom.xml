@@ -29,14 +29,9 @@ SPDX-License-Identifier: CC0-1.0
     <maven-jar-plugin.version>3.5.1</maven-jar-plugin.version>
     <maven-resources-plugin.version>3.5.0</maven-resources-plugin.version>
     <maven-compiler-plugin.version>3.16.0</maven-compiler-plugin.version>
-<<<<<<< before updating
     <maven-surefire-plugin.version>3.6.1</maven-surefire-plugin.version>
     <maven-failsafe-plugin.version>3.6.1</maven-failsafe-plugin.version>
-=======
-    <maven-surefire-plugin.version>3.6.0</maven-surefire-plugin.version>
-    <maven-failsafe-plugin.version>3.6.0</maven-failsafe-plugin.version>
     <build-helper-maven-plugin.version>3.8.0</build-helper-maven-plugin.version>
->>>>>>> after updating
     <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
     <checkstyle.version>14.4.0</checkstyle.version>
     <spotbugs-maven-plugin.version>4.10.5.0</spotbugs-maven-plugin.version>
@@ -288,7 +283,9 @@ SPDX-License-Identifier: CC0-1.0
             </goals>
             <configuration>
               <outputDirectory>${project.build.directory}/test-fixtures-classes</outputDirectory>
-              <generatedTestSourcesDirectory>${project.build.directory}/generated-test-sources/test-fixtures-annotations</generatedTestSourcesDirectory>
+              <generatedTestSourcesDirectory>
+                ${project.build.directory}/generated-test-sources/test-fixtures-annotations
+              </generatedTestSourcesDirectory>
               <compileSourceRoots>
                 <compileSourceRoot>${project.basedir}/src/testFixtures/java</compileSourceRoot>
               </compileSourceRoots>
@@ -302,7 +299,9 @@ SPDX-License-Identifier: CC0-1.0
             </goals>
             <configuration>
               <outputDirectory>${project.build.directory}/integration-test-classes</outputDirectory>
-              <generatedTestSourcesDirectory>${project.build.directory}/generated-test-sources/test-integration-annotations</generatedTestSourcesDirectory>
+              <generatedTestSourcesDirectory>
+                ${project.build.directory}/generated-test-sources/test-integration-annotations
+              </generatedTestSourcesDirectory>
               <compileSourceRoots>
                 <compileSourceRoot>${project.basedir}/src/testIntegration/java</compileSourceRoot>
               </compileSourceRoots>
@@ -418,7 +417,9 @@ SPDX-License-Identifier: CC0-1.0
               <goal>check</goal>
             </goals>
             <configuration>
-              <configLocation>${maven.multiModuleProjectDirectory}/.config/checkstyle/testIntegration.xml</configLocation>
+              <configLocation>
+                ${maven.multiModuleProjectDirectory}/.config/checkstyle/testIntegration.xml
+              </configLocation>
               <sourceDirectories>
                 <sourceDirectory>${project.basedir}/src/testIntegration/java</sourceDirectory>
               </sourceDirectories>
