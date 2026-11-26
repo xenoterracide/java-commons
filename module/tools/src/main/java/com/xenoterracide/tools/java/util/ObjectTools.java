@@ -1,6 +1,6 @@
-// SPDX-FileCopyrightText: Copyright © 2024 Caleb Cushing
+// SPDX-FileCopyrightText: Copyright © 2024, 2026 Caleb Cushing
 //
-// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: PolyForm-Small-Business-1.0.0 OR PolyForm-Noncommercial-1.0.0
 
 package com.xenoterracide.tools.java.util;
 

@@ -8,7 +8,7 @@ SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 ## Project Overview
 
-`java-commons` is a multi-module Maven parent project of reusable Java libraries by Caleb Cushing. License: Apache-2.0; per-file licenses in `REUSE.toml`.
+`java-commons` is a multi-module Maven parent project of reusable Java libraries by Caleb Cushing. License: PolyForm-Small-Business-1.0.0 OR PolyForm-Noncommercial-1.0.0; per-file licenses in `REUSE.toml`.
 
 - **Group ID**: `com.xenoterracide`
 - **Artifact ID**: `java-commons-parent`
@@ -111,7 +111,7 @@ Rules live in `.editorconfig` and `.prettierrc.yml`. Prettier formats every file
 
 <!-- REUSE-IgnoreStart -->
 
-- Java source files use `SPDX-License-Identifier: Apache-2.0`.
+- Java source files use `SPDX-License-Identifier: PolyForm-Small-Business-1.0.0 OR PolyForm-Noncommercial-1.0.0`.
 - Configuration/XML/TOML/YAML/JSON5 files use `CC0-1.0`.
 - Shell scripts and JS/CJS files use `MIT`.
 - Markdown/ADoc use `CC-BY-NC-SA-4.0`.

@@ -54,7 +54,7 @@ This repository uses skills from [xenoterracide/agent-skills](https://github.com
 
 ## License
 
-- **Code**: [Apache-2.0](LICENSES/Apache-2.0.txt)
+- **Code**: [PolyForm-Small-Business-1.0.0](LICENSES/PolyForm-Small-Business-1.0.0.txt) OR [PolyForm-Noncommercial-1.0.0](LICENSES/PolyForm-Noncommercial-1.0.0.txt)
 - **Documentation**: [CC-BY-NC-SA-4.0](LICENSES/CC-BY-NC-SA-4.0.txt)
 - **Configuration files**: [CC0-1.0](LICENSES/CC0-1.0.txt)
 - **Scripts and manifests** (`*.sh`, `*.js`, `*.yml`, `package.json`): [MIT](LICENSES/MIT.txt)
