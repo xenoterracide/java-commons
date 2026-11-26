@@ -251,11 +251,8 @@ SPDX-License-Identifier: CC0-1.0
           <version>${maven-javadoc-plugin.version}</version>
           <configuration>
             <doclint>all,-missing</doclint>
-            <bottom>
-              Documentation licensed under
-              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
-              .
-            </bottom>
+            <bottom
+            ><![CDATA[Documentation licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.]]></bottom>
           </configuration>
         </plugin>
         <plugin>
