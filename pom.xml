@@ -16,6 +16,13 @@ SPDX-License-Identifier: CC0-1.0
   <packaging>pom</packaging>
   <name>Java Commons Parent</name>
   <description>Parent POM for Java commons libraries</description>
+  <url>https://github.com/xenoterracide/java-commons</url>
+  <inceptionYear>2015</inceptionYear>
+  <scm>
+    <connection>scm:git:https://github.com/xenoterracide/java-commons.git</connection>
+    <developerConnection>scm:git:https://github.com/xenoterracide/java-commons.git</developerConnection>
+    <url>https://github.com/xenoterracide/java-commons</url>
+  </scm>
   <modules>
     <module>module/tools</module>
   </modules>
@@ -38,6 +45,7 @@ SPDX-License-Identifier: CC0-1.0
     <spotbugs.version>4.10.5</spotbugs.version>
     <jacoco-maven-plugin.version>0.8.16</jacoco-maven-plugin.version>
     <maven-javadoc-plugin.version>3.12.0</maven-javadoc-plugin.version>
+    <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
     <junit.version>6.1.3</junit.version>
     <assertj.version>3.27.7</assertj.version>
   </properties>
@@ -243,6 +251,22 @@ SPDX-License-Identifier: CC0-1.0
           <version>${maven-javadoc-plugin.version}</version>
           <configuration>
             <doclint>all,-missing</doclint>
+            <bottom>
+              Documentation licensed under
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+              .
+            </bottom>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>${maven-gpg-plugin.version}</version>
+          <configuration>
+            <gpgArguments>
+              <arg>--pinentry-mode</arg>
+              <arg>loopback</arg>
+            </gpgArguments>
           </configuration>
         </plugin>
       </plugins>
@@ -429,10 +453,47 @@ SPDX-License-Identifier: CC0-1.0
       </plugin>
     </plugins>
   </build>
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/xenoterracide/java-commons</url>
+    </repository>
+  </distributionManagement>
+  <profiles>
+    <profile>
+      <id>sign</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>staging</id>
+      <properties>
+        <altDeploymentRepository>staging::default::file:${project.build.directory}/repo</altDeploymentRepository>
+      </properties>
+    </profile>
+  </profiles>
   <licenses>
     <license>
-      <name>Apache-2.0</name>
-      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <name>PolyForm-Small-Business-1.0.0</name>
+      <url>https://spdx.org/licenses/PolyForm-Small-Business-1.0.0.html</url>
+    </license>
+    <license>
+      <name>PolyForm-Noncommercial-1.0.0</name>
+      <url>https://spdx.org/licenses/PolyForm-Noncommercial-1.0.0.html</url>
     </license>
   </licenses>
   <developers>
